@@ -1,0 +1,257 @@
+.landing_main_container {
+  height: 100%;
+}
+
+.landing_main_container .landing_title_and_image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.landing_main_container .landing_title_and_image .landing_title_container .landing_title {
+  color: #FFFFFF;
+  font-size: 64px;
+  margin-top: 150px;
+}
+
+.landing_main_container .landing_title_and_image .landing_title_container h4 {
+  color: #B5B5B5;
+  font-size: 1.25rem;
+  margin-top: 40px;
+}
+
+.landing_main_container .landing_title_and_image .landing_image_container {
+  position: relative;
+  display: inline-block;
+  margin-top: 100px;
+}
+
+.landing_main_container .landing_title_and_image .landing_image_container .landing_fighters_image {
+  width: 50vw;
+}
+
+.landing_main_container .landing_title_and_image .landing_image_container .landing_image_text_overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  color: #E2FCEF;
+  -webkit-text-stroke: 1px black;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  -webkit-filter: blur(0.5px);
+          filter: blur(0.5px);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-filter: blur(1px) hue-rotate(10deg);
+          filter: blur(1px) hue-rotate(10deg);
+  /* Adjust the blur and hue-rotate values as desired */
+  /* Adjust the opacity and color as desired */
+  /* Adjust blend mode as desired */
+}
+
+.landing_main_container .landing_title_and_image .landing_image_container .landing_image_text_overlay h2 {
+  font-size: 56px;
+  margin-bottom: 10px;
+}
+
+.landing_main_container .landing_statistics_container {
+  width: 80vw;
+  background-color: #402039;
+  height: 300px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.landing_main_container .landing_success_rate_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #FFFFFF;
+}
+
+.landing_main_container .landing_success_rate_container h2 {
+  font-size: 42px;
+}
+
+.landing_main_container .landing_success_rate_container h4 {
+  font-size: 32px;
+}
+
+.landing_main_container .landing_success_rate_container .landing_success_percentage {
+  background-color: #181818;
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 40px;
+}
+
+.landing_main_container .landing_card_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.landing_main_container .landing_card_container .landing_card {
+  border: 1px solid #F6F7F8;
+  height: 60vh;
+  width: 400px;
+  padding: 25px;
+}
+
+.landing_main_container .landing_card_container .landing_card .landing_card_main_icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 25px;
+}
+
+.landing_main_container .landing_card_container .landing_card .landing_card_items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #F6F7F8;
+}
+
+.landing_main_container .landing_card_container .landing_card .landing_card_items .landing_card_items_tick_and_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 4px;
+  /* Adjust the margin-top value as needed */
+}
+
+.landing_main_container .landing_card_container .landing_card .landing_card_items .landing_card_items_tick_and_text i {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  color: white;
+  font-size: 24px;
+  height: 80vh;
+}
+
+.card-icon {
+  font-size: 48px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.list-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+  text-align: center;
+  /* Center-align the list items */
+}
+
+.list-icon {
+  font-size: 24px;
+  margin-right: 10px;
+  margin-left: auto;
+  /* Center-align the icon within the list items */
+}
+
+.list-text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: left;
+  font-size: 18px;
+  /* Left-align the text within the list items */
+}
+
+.landing_card_title {
+  font-size: 32px;
+  text-align: center;
+  color: #F6F7F8;
+  min-height: 70px;
+}
+
+.landing_button_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
+}
+
+.landing_button_container .sign_up_button {
+  cursor: pointer;
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: .5em;
+  border: solid .25em transparent;
+  padding: 1em 1.5em;
+  border-radius: 9em;
+  background: -webkit-gradient(linear, left top, right bottom, from(var(--slist))) border-box;
+  background: linear-gradient(to right bottom, var(--slist)) border-box;
+  font: 700 1.5em/ 1.25 ubuntu, sans-serif;
+  text-transform: uppercase;
+}
+
+.landing_button_container .sign_up_button::after {
+  content: attr(data-ico);
+}
+/*# sourceMappingURL=Landing.css.map */
