@@ -49,9 +49,6 @@
   width: max-content;
   -webkit-filter: blur(1px) hue-rotate(10deg);
           filter: blur(1px) hue-rotate(10deg);
-  /* Adjust the blur and hue-rotate values as desired */
-  /* Adjust the opacity and color as desired */
-  /* Adjust blend mode as desired */
 }
 
 .landing_main_container .landing_title_and_image .landing_image_container .landing_image_text_overlay h2 {
@@ -81,6 +78,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 80px;
   color: #FFFFFF;
 }
 
@@ -164,13 +162,87 @@
       -ms-flex-align: start;
           align-items: flex-start;
   margin-top: 4px;
-  /* Adjust the margin-top value as needed */
 }
 
 .landing_main_container .landing_card_container .landing_card .landing_card_items .landing_card_items_tick_and_text i {
   -ms-flex-negative: 0;
       flex-shrink: 0;
   margin-right: 10px;
+}
+
+.landing_main_container .landing_button_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
+}
+
+.landing_main_container .landing_button_container .sign_up_button {
+  cursor: pointer;
+  color: white;
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: .5em;
+  border: solid .25em transparent;
+  padding: 1em 1.5em;
+  border-radius: 9em;
+  background: -webkit-gradient(linear, left top, right bottom, from(var(--slist))) border-box;
+  background: linear-gradient(to right bottom, var(--slist)) border-box;
+  font: 700 1.5em/ 1.25 ubuntu, sans-serif;
+  text-transform: uppercase;
+}
+
+.landing_main_container .landing_button_container .sign_up_button::after {
+  content: attr(data-ico);
+}
+
+.landing_main_container .landing_about_container {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 70%;
+  white-space: pre-wrap;
+  margin-top: 40px;
+}
+
+.landing_main_container .landing_about_container h1 {
+  font-size: 42px;
+}
+
+.landing_main_container .landing_about_container p {
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.landing_main_container .landing_logo_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 40px;
 }
 
 .card {
@@ -199,14 +271,12 @@
           align-items: center;
   margin-bottom: 10px;
   text-align: center;
-  /* Center-align the list items */
 }
 
 .list-icon {
   font-size: 24px;
   margin-right: 10px;
   margin-left: auto;
-  /* Center-align the icon within the list items */
 }
 
 .list-text {
@@ -215,7 +285,6 @@
           flex: 1;
   text-align: left;
   font-size: 18px;
-  /* Left-align the text within the list items */
 }
 
 .landing_card_title {
@@ -223,35 +292,5 @@
   text-align: center;
   color: #F6F7F8;
   min-height: 70px;
-}
-
-.landing_button_container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 50px;
-}
-
-.landing_button_container .sign_up_button {
-  cursor: pointer;
-  color: white;
-  display: -ms-grid;
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: .5em;
-  border: solid .25em transparent;
-  padding: 1em 1.5em;
-  border-radius: 9em;
-  background: -webkit-gradient(linear, left top, right bottom, from(var(--slist))) border-box;
-  background: linear-gradient(to right bottom, var(--slist)) border-box;
-  font: 700 1.5em/ 1.25 ubuntu, sans-serif;
-  text-transform: uppercase;
-}
-
-.landing_button_container .sign_up_button::after {
-  content: attr(data-ico);
 }
 /*# sourceMappingURL=Landing.css.map */

@@ -1,0 +1,200 @@
+[
+  {
+    "fighter1": "Marc-Andre Barriault",
+    "fighter2": "Eryk Anders",
+    "count": {
+      "Marc-Andre Barriault": 3,
+      "Eryk Anders": 5
+    },
+    "winner": "Eryk Anders"
+  },
+  {
+    "fighter1": "Mike Malott",
+    "fighter2": "Adam Fugitt",
+    "count": {
+      "Mike Malott": 5,
+      "Adam Fugitt": 5
+    },
+    "winner": "Draw"
+  },
+  {
+    "fighter1": "Dan Ige",
+    "fighter2": "Nate Landwehr",
+    "count": {
+      "Dan Ige": 2,
+      "Nate Landwehr": 8
+    },
+    "winner": "Nate Landwehr"
+  },
+  {
+    "fighter1": "Amanda Nunes",
+    "fighter2": "Irene Aldana",
+    "count": {
+      "Amanda Nunes": 8,
+      "Irene Aldana": 2
+    },
+    "winner": "Amanda Nunes"
+  },
+  {
+    "fighter1": "Charles Oliveira",
+    "fighter2": "Beneil Dariush",
+    "count": {
+      "Charles Oliveira": 5,
+      "Beneil Dariush": 5
+    },
+    "winner": "Draw"
+  },
+  {
+    "fighter1": "Nassourdine Imavov",
+    "fighter2": "Chris Curtis",
+    "count": {
+      "Nassourdine Imavov": 7,
+      "Chris Curtis": 1
+    },
+    "winner": "Nassourdine Imavov"
+  },
+  {
+    "fighter1": "Miranda Maverick",
+    "fighter2": "Jasmine Jasudavicius",
+    "count": {
+      "Miranda Maverick": 7,
+      "Jasmine Jasudavicius": 3
+    },
+    "winner": "Miranda Maverick"
+  },
+  {
+    "fighter1": "Aiemann Zahabi",
+    "fighter2": "Aoriqileng",
+    "count": {
+      "Aiemann Zahabi": 4,
+      "Aoriqileng": 5
+    },
+    "winner": "Aoriqileng"
+  },
+  {
+    "fighter1": "Kyle Nelson",
+    "fighter2": "Blake Bilder",
+    "count": {
+      "Kyle Nelson": 5,
+      "Blake Bilder": 5
+    },
+    "winner": "Draw"
+  },
+  {
+    "fighter1": "Diana Belbita",
+    "fighter2": "Maria Oliveira",
+    "count": {
+      "Diana Belbita": 5,
+      "Maria Oliveira": 3
+    },
+    "winner": "Diana Belbita"
+  },
+  {
+    "fighter1": "Amanda Nunes",
+    "fighter2": "Irene Aldana",
+    "count": {
+      "Amanda Nunes": 8,
+      "Irene Aldana": 2
+    },
+    "winner": "Amanda Nunes"
+  },
+  {
+    "fighter1": "Charles Oliveira",
+    "fighter2": "Beneil Dariush",
+    "count": {
+      "Charles Oliveira": 5,
+      "Beneil Dariush": 5
+    },
+    "winner": "Draw"
+  },
+  {
+    "fighter1": "Mike Malott",
+    "fighter2": "Adam Fugitt",
+    "count": {
+      "Mike Malott": 5,
+      "Adam Fugitt": 5
+    },
+    "winner": "Draw"
+  },
+  {
+    "fighter1": "Marc-Andre Barriault",
+    "fighter2": "Eryk Anders",
+    "count": {
+      "Marc-Andre Barriault": 3,
+      "Eryk Anders": 5
+    },
+    "winner": "Eryk Anders"
+  },
+  {
+    "fighter1": "Dan Ige",
+    "fighter2": "Nate Landwehr",
+    "count": {
+      "Dan Ige": 2,
+      "Nate Landwehr": 8
+    },
+    "winner": "Nate Landwehr"
+  },
+  {
+    "fighter1": "David Dvorak",
+    "fighter2": "Steve Erceg",
+    "count": {
+      "David Dvorak": 7,
+      "Steve Erceg": 2
+    },
+    "winner": "David Dvorak"
+  },
+  {
+    "fighter1": "Nassourdine Imavov",
+    "fighter2": "Chris Curtis",
+    "count": {
+      "Nassourdine Imavov": 7,
+      "Chris Curtis": 1
+    },
+    "winner": "Nassourdine Imavov"
+  },
+  {
+    "fighter1": "Miranda Maverick",
+    "fighter2": "Jasmine Jasudavicius",
+    "count": {
+      "Miranda Maverick": 7,
+      "Jasmine Jasudavicius": 3
+    },
+    "winner": "Miranda Maverick"
+  },
+  {
+    "fighter1": "Aiemann Zahabi",
+    "fighter2": "Aoriqileng",
+    "count": {
+      "Aiemann Zahabi": 4,
+      "Aoriqileng": 5
+    },
+    "winner": "Aoriqileng"
+  },
+  {
+    "fighter1": "David Dvorak",
+    "fighter2": "Steve Erceg",
+    "count": {
+      "David Dvorak": 7,
+      "Steve Erceg": 2
+    },
+    "winner": "David Dvorak"
+  },
+  {
+    "fighter1": "Kyle Nelson",
+    "fighter2": "Blake Bilder",
+    "count": {
+      "Kyle Nelson": 5,
+      "Blake Bilder": 5
+    },
+    "winner": "Draw"
+  },
+  {
+    "fighter1": "Diana Belbita",
+    "fighter2": "Maria Oliveira",
+    "count": {
+      "Diana Belbita": 5,
+      "Maria Oliveira": 3
+    },
+    "winner": "Diana Belbita"
+  }
+]

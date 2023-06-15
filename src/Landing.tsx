@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FightersImage from './Images/fighters.png';
 import './Styles/Landing.css';
 import AnimatedValue from './Components/AnimatedValue';
+import Logo from './Images/Beaumont AI.png';
 
 function Landing() {
   const [hovered, setHovered] = useState(false);
@@ -28,43 +29,19 @@ function Landing() {
             success rate on every UFC event, almost guaranteeing big profits to users who sign up
           </h4>
         </div>
-        {/* <i className="fa-solid fa-star icon fa-2x" style={{ backgroundColor: 'white' }} /> */}
 
         <div className="landing_image_container">
           <img src={FightersImage} alt="Fighters" className="landing_fighters_image" />
-          <div className="landing_image_text_overlay">
-            {/* <h2>Lorem ipsum and all that</h2> */}
-          </div>
+          <div className="landing_image_text_overlay" />
         </div>
       </div>
-      {/* <div className="landing_statistics_container">
-        <div>
-
-          <h1>70% success rate</h1>
-          <i className="fa-solid fa-star icon fa-2x" style={{ backgroundColor: 'white' }} />
-        </div>
-        <div>
-
-          <h1>70% success rate</h1>
-          <i className="fa-solid fa-star icon fa-2x" style={{ backgroundColor: 'white' }} />
-        </div>
-        <div>
-
-          <h1>70% success rate</h1>
-          <i className="fa-solid fa-star icon fa-2x" style={{ backgroundColor: 'white' }} />
-        </div>
-      </div> */}
       <div className="landing_success_rate_container">
         <h2>Current software success rate:</h2>
         <div className="landing_success_percentage">
-
-          {/* <h4> */}
           <AnimatedValue endValue={70} />
           %
-          {/* </h4> */}
         </div>
       </div>
-      <h2>Make money betting on UFC</h2>
       <div className="landing_card_container">
 
         <div className="card" style={{ marginRight: '40px' }}>
@@ -158,11 +135,8 @@ function Landing() {
 
       </div>
       <div className="landing_button_container">
-        {/* <button type="button" className="sign_up_button">Sign up now!</button> */}
         <button
-          // data-ico="👻"
           style={buttonStyle}
-          // onClick={handleClick}
           type="button"
           className="sign_up_button"
           onMouseEnter={() => setHovered(true)}
@@ -170,6 +144,33 @@ function Landing() {
         >
           Sign up now!
         </button>
+      </div>
+      <div className="landing_about_container">
+        <h1>#1 MMA prediction app</h1>
+        <p>
+          Dans app is a comprehensive platform that combines a vast database
+          of past event data with advanced predictive algorithms,
+          empowering users to make informed predictions and stay ahead of the curve
+          in the world of mixed martial arts.
+          {'\n'}
+          {'\n'}
+          At the core of our app lies an extensive collection of historical UFC event data,
+          encompassing fight results, detailed statistics, and crucial performance metrics.
+          With just a few clicks, users can dive deep into the fighting careers of
+          their favorite athletes, exploring their records, past performances,
+          and even uncovering hidden patterns and trends. This wealth of information
+          serves as a solid foundation for making accurate predictions about future fights.
+          {'\n'}
+          {'\n'}
+          So, why wait? Join our community of UFC aficionados and unlock the power
+          of data-driven predictions. Explore the fascinating world of
+          MMA like never before, make informed decisions, and bask in the
+          thrill of accurate fight predictions with our groundbreaking UFC
+          event data and prediction web app.
+        </p>
+      </div>
+      <div className="landing_logo_container">
+        <img src={Logo} alt="logo" />
       </div>
     </div>
   );
