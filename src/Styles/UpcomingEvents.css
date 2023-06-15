@@ -1,0 +1,168 @@
+.event_poster {
+  width: 100vw;
+  height: 70vh;
+}
+
+.upcoming_event_title {
+  text-align: center;
+  font-size: 48px;
+  margin-top: 20px;
+}
+
+.fighter_name {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+.percentage_win {
+  font-size: 14px;
+}
+
+.upcoming_events_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.upcoming_events_container .upcoming_events_fight_container {
+  width: 60%;
+  margin-top: 20px;
+  background-color: black;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto;
+      grid-template-rows: auto;
+  cursor: pointer;
+  -webkit-transition: -webkit-box-shadow 0.3s ease;
+  transition: -webkit-box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+}
+
+.upcoming_events_container .upcoming_events_fight_container:hover {
+  background-color: #111017;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.upcoming_events_container .fighters_container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30% auto 30%;
+      grid-template-columns: 30% auto 30%;
+}
+
+.upcoming_events_container .fighters_container::before {
+  grid-column: 1 / -1;
+  content: "";
+  height: 2px;
+  background: -webkit-gradient(linear, left top, right top, from(red), color-stop(50%, red), color-stop(51%, blue), to(blue));
+  background: linear-gradient(to right, red 0%, red 50%, blue 51%, blue 100%);
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+
+.upcoming_events_container .percentage_container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% auto 20%;
+      grid-template-columns: 20% auto 20%;
+  padding-top: 5px;
+}
+
+.upcoming_events_container .percentage_container .fighter_1_percentage_container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.upcoming_events_container .percentage_container .fighter_2_percentage_container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.upcoming_events_container .fighter_image_container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% auto 20%;
+      grid-template-columns: 20% auto 20%;
+  padding-top: 5px;
+}
+
+.upcoming_events_container .fighter_image_container .fighter_1_percentage_container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.upcoming_events_container .fighter_image_container .fighter_2_percentage_container {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.upcoming_events_container .fighter_1_container {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  /* The first row */
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+.upcoming_events_container .vs {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  /* The first row */
+  -ms-grid-column-align: center;
+      justify-self: center;
+  /* Center align the VS text */
+}
+
+.upcoming_events_container .vs p {
+  font-size: 14px;
+}
+
+.upcoming_events_container .fighter_2_container {
+  -ms-grid-row: 1;
+  grid-row: 1;
+  /* The first row */
+  display: -ms-grid;
+  display: grid;
+  /* Align the fighter_2 text to the end of the grid */
+}
+
+.upcoming_events_container .winner_container {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -ms-grid;
+  display: grid;
+  height: 40px;
+}
+/*# sourceMappingURL=UpcomingEvents.css.map */

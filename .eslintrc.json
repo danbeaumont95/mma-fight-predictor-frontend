@@ -23,6 +23,8 @@
     "no-nested-ternary": "off",
     "no-param-reassign": "warn",
     "no-plusplus": "warn",
+    "semi": "off",
+    "camelcase": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

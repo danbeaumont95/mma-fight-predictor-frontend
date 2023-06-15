@@ -1,0 +1,193 @@
+.event_poster {
+  width: 100vw;
+  height: 70vh;
+}
+
+.upcoming_event_title {
+  text-align: center;
+  font-size: 48px;
+  margin-top: 20px;
+}
+
+.fighter_name {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+.percentage_win {
+  font-size: 14px;
+}
+
+.upcoming_events_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+
+  .upcoming_events_fight_container {
+    width: 60%;
+    margin-top: 20px;
+    background-color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    display: grid;
+    grid-template-rows: auto;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .upcoming_events_fight_container:hover {
+    // background-color: lightgray;
+    background-color: #111017;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+  }
+
+  .fighters_container {
+    display: grid;
+    grid-template-columns: 30% auto 30%;
+  }
+
+  // .fighters_container::before {
+  //   content: "";
+  //   grid-column: 1 / -1;
+  //   height: 2px;
+  //   /* Adjust the height as needed */
+  //   background-image: linear-gradient(to right, red 50%, blue 50%);
+  // }
+
+
+  // .fighters_container::before {
+  //   content: "";
+  //   grid-column: 1 / -1;
+  //   height: 2px;
+  //   /* Adjust the height as needed */
+  //   background-image: linear-gradient(to right, red 49.9%, blue 50%);
+  // }
+  // .fighters_container::before {
+  //   grid-column: 1 / -1;
+  //   content: "";
+  //   height: 2px;
+  //   background:
+  //     linear-gradient(to right, red 0%, red 50%, blue 50%, blue 100%);
+  // }
+
+  // .fighters_container::before {
+  //   grid-column: 1 / -1;
+  //   content: "";
+  //   height: 2px;
+  //   background:
+  //     linear-gradient(to right, red 0%, red 50%, blue 50%, blue 100%);
+  //   background-size: 200% 100%;
+  //   background-position: right;
+  //   animation: color-transition 2s linear infinite;
+  // }
+
+  // @keyframes color-transition {
+  //   0% {
+  //     background-position: right;
+  //   }
+
+  //   50% {
+  //     background-position: left;
+  //   }
+
+  //   100% {
+  //     background-position: right;
+  //   }
+  // }
+  .fighters_container::before {
+    grid-column: 1 / -1;
+    content: "";
+    height: 2px;
+    background:
+      linear-gradient(to right, red 0%, red 50%, blue 51%, blue 100%);
+    background-size: 100% 50%;
+    background-repeat: no-repeat;
+  }
+
+
+  .percentage_container {
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    padding-top: 5px;
+
+
+    .fighter_1_percentage_container {
+      display: grid;
+      justify-content: center;
+
+    }
+
+    .fighter_2_percentage_container {
+      display: grid;
+      // justify-content: end;
+      justify-content: center;
+    }
+  }
+
+  .fighter_image_container {
+    display: grid;
+    grid-template-columns: 20% auto 20%;
+    padding-top: 5px;
+
+
+    .fighter_1_percentage_container {
+      display: grid;
+      justify-content: center;
+
+    }
+
+    .fighter_2_percentage_container {
+      display: grid;
+      // justify-content: end;
+      justify-content: center;
+    }
+  }
+
+  .fighter_1_container {
+    grid-row: 1;
+    /* The first row */
+    display: grid;
+    // justify-content: center;
+    justify-content: start;
+  }
+
+  .vs {
+    grid-row: 1;
+    /* The first row */
+    justify-self: center;
+
+    /* Center align the VS text */
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .fighter_2_container {
+    grid-row: 1;
+    /* The first row */
+    // justify-self: end;
+    display: grid;
+    // justify-content: center;
+    /* Align the fighter_2 text to the end of the grid */
+  }
+
+  .winner_container {
+
+    justify-content: center;
+    display: grid;
+    // grid-row: 2;
+    // grid-auto-rows: 10;
+    // grid-template-columns: 1fr 1.5fr 1fr;
+    // grid-template-rows: auto auto 1fr 1fr 1fr auto auto;
+    // grid-gap: 10px;
+    height: 40px;
+  }
+
+
+
+
+}
