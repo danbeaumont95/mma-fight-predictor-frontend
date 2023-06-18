@@ -24,11 +24,17 @@ const getNextEventPoster = async () => {
   return res
 }
 
+const getInDepthStats = async (fighter_1: string, fighter_2: string) => {
+  const res = await axios.get(`http://127.0.0.1:8000/mma_fight_predictor/events/get_in_depth_stats?fighter_1=${fighter_1}&fighter_2=${fighter_2}`);
+  return res;
+}
+
 const EventService = {
   getUpcomingEvents,
   getFightsForEvent,
   getBasicFightStatsForFight,
   getNextEventPoster,
+  getInDepthStats,
 };
 
 export default EventService;
