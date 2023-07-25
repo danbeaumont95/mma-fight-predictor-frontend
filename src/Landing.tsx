@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import FightersImage from './Images/fighters.png';
 import './Styles/Landing.css';
 import AnimatedValue from './Components/AnimatedValue';
 import Logo from './Images/Beaumont AI.png';
+import DarkModeSlider from './Components/DarkModeSlider';
+import { AppState } from './redux/types';
 
-function Landing() {
+interface LandingProps {
+  lightModeEnabled: boolean;
+}
+
+function Landing({ lightModeEnabled }: LandingProps) {
   const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    const element: any = document.querySelector('.App');
+    if (element) {
+      if (lightModeEnabled) {
+        element.style.backgroundColor = '#fff';
+      } else {
+        element.style.backgroundColor = '#121212';
+      }
+    }
+    return () => {
+    };
+  }, [lightModeEnabled]);
 
   const buttonStyle = {
     '--slist': hovered ? '#20A4F3, #2EC4B6' : '#2EC4B6, #20A4F3',
@@ -13,17 +33,19 @@ function Landing() {
 
   return (
     <div className="landing_main_container">
+      <DarkModeSlider />
+
       <div className="landing_title_and_image">
 
         <div className="landing_title_container">
 
-          <h1 className="landing_title">
+          <h1 className={lightModeEnabled ? 'landing_title_light_mode' : 'landing_title'}>
             The
             <h1 style={{ color: '#20A4F3', fontSize: '64px' }}>future</h1>
             {' '}
             of sport prediction
           </h1>
-          <h4>
+          <h4 className={lightModeEnabled ? 'h4_light_mode' : undefined}>
             Through deep statistical analysis
             and heavy research, Dans app is showing at least 70%
             success rate on every UFC event, almost guaranteeing big profits to users who sign up
@@ -35,7 +57,7 @@ function Landing() {
           <div className="landing_image_text_overlay" />
         </div>
       </div>
-      <div className="landing_success_rate_container">
+      <div className={lightModeEnabled ? 'landing_success_rate_container_light_mode' : 'landing_success_rate_container'}>
         <h2>Current software success rate:</h2>
         <div className="landing_success_percentage">
           <AnimatedValue endValue={70} />
@@ -44,8 +66,8 @@ function Landing() {
       </div>
       <div className="landing_card_container">
 
-        <div className="card" style={{ marginRight: '40px' }}>
-          <h2 className="landing_card_title">Why use Dans app</h2>
+        <div className={lightModeEnabled ? 'card_light_mode' : 'card'} style={{ marginRight: '40px' }}>
+          <h2 className={lightModeEnabled ? 'landing_card_title_light_mode' : 'landing_card_title'}>Why use Dans app</h2>
 
           <div className="card-icon">
             <i className="fa-solid fa-star icon fa-2x" style={{ color: '#20A4F3' }} />
@@ -88,8 +110,8 @@ function Landing() {
           </div>
 
         </div>
-        <div className="card" style={{ marginLeft: '40px' }}>
-          <h2 className="landing_card_title">How it works</h2>
+        <div className={lightModeEnabled ? 'card_light_mode' : 'card'} style={{ marginLeft: '40px' }}>
+          <h2 className={lightModeEnabled ? 'landing_card_title_light_mode' : 'landing_card_title'}>How it works</h2>
 
           <div className="card-icon">
             <i className="fa-solid fa-robot icon fa-2x" style={{ color: '#20A4F3' }} />
@@ -145,7 +167,7 @@ function Landing() {
           Sign up now!
         </button>
       </div>
-      <div className="landing_about_container">
+      <div className={lightModeEnabled ? 'landing_about_container_light_mode' : 'landing_about_container'}>
         <h1>#1 MMA prediction app</h1>
         <p>
           Dans app is a comprehensive platform that combines a vast database
@@ -176,4 +198,12 @@ function Landing() {
   );
 }
 
-export default Landing;
+const mapStateToProps = (state: AppState) => ({
+  lightModeEnabled: state.lightModeEnabled,
+});
+
+const mapDispatchToProps = {
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

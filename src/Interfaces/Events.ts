@@ -92,4 +92,14 @@ export interface FighterRecordAgainstOpponentAndStyle {
   fighter_1_result_previous_results_against_fighter_2: string[];
   fighter_1_record_against_fighter_2: string;
   fighter_2_record_against_fighter_1: string;
+  amount_of_times_fighter_1_has_fought_fighter_2_stance: number;
+  amount_of_times_fighter_2_has_fought_fighter_1_stance: number;
+  amount_of_wins_fighter_1_has_against_fighter_2_stance: number;
+  amount_of_wins_fighter_2_has_against_fighter_1_stance: number;
+  percentage_of_wins_fighter_1_has_against_fighter_2_stance: number;
+  percentage_of_wins_fighter_2_has_against_fighter_1_stance: number;
+  amount_of_times_fighter_1_has_fought_fighter_2_style: number;
+  amount_of_times_fighter_2_has_fought_fighter_1_style: number;
+  amount_of_wins_fighter_1_has_against_fighter_2_style: number;
+  amount_of_wins_fighter_2_has_against_fighter_1_style: number;
 }
