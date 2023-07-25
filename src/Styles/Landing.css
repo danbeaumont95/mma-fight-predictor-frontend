@@ -2,6 +2,58 @@
   height: 100%;
 }
 
+.landing_main_container .theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.landing_main_container .theme-switch input {
+  display: none;
+}
+
+.landing_main_container .slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.landing_main_container .slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  -webkit-transition: .4s;
+  transition: .4s;
+  width: 26px;
+}
+
+.landing_main_container input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+.landing_main_container input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+          transform: translateX(26px);
+}
+
+.landing_main_container .slider.round {
+  border-radius: 34px;
+}
+
+.landing_main_container .slider.round:before {
+  border-radius: 50%;
+}
+
 .landing_main_container .landing_title_and_image {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -16,10 +68,24 @@
   margin-top: 150px;
 }
 
+.landing_main_container .landing_title_and_image .landing_title_container .landing_title_light_mode {
+  color: #000000;
+  font-size: 64px;
+  margin-top: 150px;
+}
+
 .landing_main_container .landing_title_and_image .landing_title_container h4 {
-  color: #B5B5B5;
+  color: #ffffff;
   font-size: 1.25rem;
   margin-top: 40px;
+  font-weight: 500;
+}
+
+.landing_main_container .landing_title_and_image .landing_title_container .h4_light_mode {
+  color: #000000;
+  font-size: 1.25rem;
+  margin-top: 40px;
+  font-weight: 500;
 }
 
 .landing_main_container .landing_title_and_image .landing_image_container {
@@ -92,6 +158,47 @@
 
 .landing_main_container .landing_success_rate_container .landing_success_percentage {
   background-color: #181818;
+  width: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 40px;
+}
+
+.landing_main_container .landing_success_rate_container_light_mode {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 80px;
+  color: #000000;
+}
+
+.landing_main_container .landing_success_rate_container_light_mode h2 {
+  font-size: 42px;
+}
+
+.landing_main_container .landing_success_rate_container_light_mode h4 {
+  font-size: 32px;
+}
+
+.landing_main_container .landing_success_rate_container_light_mode .landing_success_percentage {
+  background-color: #ffffff;
   width: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -232,6 +339,38 @@
   padding-bottom: 40px;
 }
 
+.landing_main_container .landing_about_container_light_mode {
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 70%;
+  white-space: pre-wrap;
+  margin-top: 40px;
+}
+
+.landing_main_container .landing_about_container_light_mode h1 {
+  font-size: 42px;
+}
+
+.landing_main_container .landing_about_container_light_mode p {
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
 .landing_main_container .landing_logo_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,12 +385,23 @@
 }
 
 .card {
-  border: 1px solid #ccc;
+  border: 3px solid #ccc;
   border-radius: 5px;
   padding: 20px;
   width: 400px;
   text-align: center;
   color: white;
+  font-size: 24px;
+  height: 80vh;
+}
+
+.card_light_mode {
+  border: 3px solid #212121;
+  border-radius: 5px;
+  padding: 20px;
+  width: 400px;
+  text-align: center;
+  color: black;
   font-size: 24px;
   height: 80vh;
 }
@@ -291,6 +441,13 @@
   font-size: 32px;
   text-align: center;
   color: #F6F7F8;
+  min-height: 70px;
+}
+
+.landing_card_title_light_mode {
+  font-size: 32px;
+  text-align: center;
+  color: #101010;
   min-height: 70px;
 }
 /*# sourceMappingURL=Landing.css.map */

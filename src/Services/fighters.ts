@@ -10,9 +10,15 @@ const getMatchupStats = async (name1: string, name2: string) => {
   return res;
 }
 
+const getMostPopularFightStyles = async () => {
+  const res = await axios.get('http://127.0.0.1:8000/mma_fight_predictor/get_fight_style_with_most_wins');
+  return res;
+}
+
 const FighterService = {
   getFighterImage,
   getMatchupStats,
+  getMostPopularFightStyles,
 };
 
 export default FighterService;

@@ -124,6 +124,19 @@ function UpcomingEvents() {
     }
   }, [fightsAndWinners]);
 
+  useEffect(() => {
+    FighterService.getMostPopularFightStyles()
+      .then((res) => {
+        console.log(res, 'res123123321')
+      })
+  }, [])
+
+  const getPercentage = (val: number) => {
+    const percentage = (val * 100).toFixed(0);
+
+    return `${percentage}%`;
+  }
+
   const handleContainerClick = (name: string, name2: string) => {
     if (expandedSections.indexOf(name) > -1) {
       setExpandedSections(expandedSections.filter((el) => el !== name))
@@ -511,18 +524,106 @@ function UpcomingEvents() {
         <div className="dans_class red">
           <div>
             {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
-              .percentage_of_wins_fighter_1_has_against_fighter_2_style}
+              .amount_of_times_fighter_2_has_fought_fighter_1_style}
           </div>
 
         </div>
         <div className="dans_class border">
-          <div className="stat_title">Percentage fighter has over opponent style</div>
+          <div className="stat_title">Amount of times fighter has fought opponents with same style</div>
         </div>
         <div className="dans_class blue">
 
           <div>
             {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
               .percentage_of_wins_fighter_2_has_against_fighter_1_style}
+          </div>
+        </div>
+        <div className="dans_class red">
+          <div>
+            {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .amount_of_wins_fighter_1_has_against_fighter_2_style}
+          </div>
+
+        </div>
+        <div className="dans_class border">
+          <div className="stat_title">Amount of wins fighter has over opponent style</div>
+        </div>
+        <div className="dans_class blue">
+
+          <div>
+            {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .amount_of_wins_fighter_2_has_against_fighter_1_style}
+          </div>
+        </div>
+        <div className="dans_class red">
+          <div>
+            {getPercentage(inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .amount_of_times_fighter_1_has_fought_fighter_2_style)}
+          </div>
+
+        </div>
+        <div className="dans_class border">
+          <div className="stat_title">Percentage wins fighter has over opponent style</div>
+        </div>
+        <div className="dans_class blue">
+
+          <div>
+            {getPercentage(inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .percentage_of_wins_fighter_2_has_against_fighter_1_style)}
+          </div>
+        </div>
+
+        <div className="dans_class red">
+          <div>
+            {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .amount_of_times_fighter_1_has_fought_fighter_2_stance}
+          </div>
+
+        </div>
+        <div className="dans_class border">
+          <div className="stat_title">Amount of times fighter has fought opoonetn stance</div>
+        </div>
+        <div className="dans_class blue">
+
+          <div>
+            {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .amount_of_times_fighter_2_has_fought_fighter_1_stance}
+          </div>
+        </div>
+
+        <div className="dans_class red">
+          <div>
+            {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .amount_of_wins_fighter_1_has_against_fighter_2_stance}
+          </div>
+
+        </div>
+        <div className="dans_class border">
+          <div className="stat_title">Amount of wins fighter has over opponent fighter stance</div>
+        </div>
+        <div className="dans_class blue">
+
+          <div>
+            {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .amount_of_wins_fighter_2_has_against_fighter_1_stance}
+          </div>
+        </div>
+
+        <div className="dans_class red">
+          <div>
+            {getPercentage(inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .percentage_of_wins_fighter_1_has_against_fighter_2_stance)}
+          </div>
+
+        </div>
+        <div className="dans_class border">
+          <div className="stat_title">Percentage wins fighter has over opponent fighter stance</div>
+        </div>
+        <div className="dans_class blue">
+
+          <div>
+            {getPercentage(inDepthStatsAgainstOpponentAndStyle[el.fighter1]
+              .percentage_of_wins_fighter_2_has_against_fighter_1_stance)}
           </div>
         </div>
       </>
@@ -568,7 +669,7 @@ function UpcomingEvents() {
             }
 
             return (
-              <div className={filteredStat === 'Head to Head' && expandedSections.indexOf(el.fighter1) > -1 ? 'upcoming_events_fight_container_large' : 'upcoming_events_fight_container'} onClick={expandedSections.indexOf(el.fighter1) > -1 ? undefined : () => handleContainerClick(el.fighter1, el.fighter2)}>
+              <div className={(filteredStat === 'Head to Head' || filteredStat === 'Stats against opponent/style') && expandedSections.indexOf(el.fighter1) > -1 ? 'upcoming_events_fight_container_large' : 'upcoming_events_fight_container'} onClick={expandedSections.indexOf(el.fighter1) > -1 ? undefined : () => handleContainerClick(el.fighter1, el.fighter2)}>
                 {expandedSections.indexOf(el.fighter1) < 0 ? (
                   <>
                     {fightersSection(el)}
@@ -655,7 +756,7 @@ function UpcomingEvents() {
 
                       </div>
                     </div>
-                    <div className={filteredStat === 'Head to Head' ? 'fighter_image_container_large' : 'fighter_image_container'}>
+                    <div className={filteredStat === 'Head to Head' || filteredStat === 'Stats against opponent/style' ? 'fighter_image_container_large' : 'fighter_image_container'}>
                       <div className="fighter_1_percentage_container">
 
                         {fightersImagesState[el.fighter1] && typeof (fightersImagesState[el.fighter1]) === 'string' && fightersImagesState[el.fighter1].startsWith('htt') ? (
@@ -689,8 +790,6 @@ function UpcomingEvents() {
 
                             <div style={filteredStat === 'Stats against opponent/style' ? { fontWeight: 'bold', textDecoration: 'underline' } : undefined} onClick={() => setFilteredStat('Stats against opponent/style')}>Stats against opponent/style</div>
                           ) : <i className="fas fa-circle-notch fa-spin" style={{ height: 'fit-content', width: 'fit-content' }} />}
-                          <div>Stat4</div>
-                          <div>Stat5</div>
                         </div>
                         {getStats(el)}
                       </div>
