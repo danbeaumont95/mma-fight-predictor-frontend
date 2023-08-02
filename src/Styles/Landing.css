@@ -1,5 +1,12 @@
-.landing_main_container {
-  height: 100%;
+.landing_main_container .container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .landing_main_container .theme-switch {
@@ -58,30 +65,60 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 90%;
-  margin: auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 100%;
 }
 
-.landing_main_container .landing_title_and_image .landing_title_container .landing_title {
+.landing_main_container .landing_title_and_image .landing_title_container {
+  -webkit-box-flex: 60%;
+      -ms-flex: 60%;
+          flex: 60%;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landing_main_container .landing_title_and_image .landing_title_container .title_and_text {
+  padding-left: 80px;
+  padding-right: 80px;
+  height: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.landing_main_container .landing_title_and_image .landing_title_container .title_and_text .landing_title {
   color: #FFFFFF;
   font-size: 64px;
-  margin-top: 150px;
 }
 
-.landing_main_container .landing_title_and_image .landing_title_container .landing_title_light_mode {
+.landing_main_container .landing_title_and_image .landing_title_container .title_and_text .landing_title_light_mode {
   color: #000000;
   font-size: 64px;
   margin-top: 150px;
 }
 
-.landing_main_container .landing_title_and_image .landing_title_container h4 {
+.landing_main_container .landing_title_and_image .landing_title_container .title_and_text h4 {
   color: #ffffff;
   font-size: 1.25rem;
-  margin-top: 40px;
+  margin-top: 20px;
   font-weight: 500;
 }
 
-.landing_main_container .landing_title_and_image .landing_title_container .h4_light_mode {
+.landing_main_container .landing_title_and_image .landing_title_container .title_and_text .h4_light_mode {
   color: #000000;
   font-size: 1.25rem;
   margin-top: 40px;
@@ -89,13 +126,30 @@
 }
 
 .landing_main_container .landing_title_and_image .landing_image_container {
-  position: relative;
-  display: inline-block;
-  margin-top: 100px;
+  -webkit-box-flex: 40%;
+      -ms-flex: 40%;
+          flex: 40%;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.landing_main_container .landing_title_and_image .landing_image_container .image_container {
+  height: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .landing_main_container .landing_title_and_image .landing_image_container .landing_fighters_image {
-  width: 50vw;
+  height: -webkit-fill-available;
+  width: 100%;
 }
 
 .landing_main_container .landing_title_and_image .landing_image_container .landing_image_text_overlay {
@@ -288,6 +342,8 @@
 }
 
 .landing_main_container .landing_button_container .sign_up_button {
+  margin-bottom: 50px;
+  margin-top: 50px;
   cursor: pointer;
   color: white;
   display: -ms-grid;
@@ -305,6 +361,26 @@
 
 .landing_main_container .landing_button_container .sign_up_button::after {
   content: attr(data-ico);
+}
+
+.landing_main_container .landing_features_container_dark {
+  color: white;
+  text-align: center;
+}
+
+.landing_main_container .landing_features_container_dark h1 {
+  font-size: 28px;
+  padding-bottom: 30px;
+}
+
+.landing_main_container .landing_features_container_light {
+  color: black;
+  text-align: center;
+}
+
+.landing_main_container .landing_features_container_light h1 {
+  font-size: 28px;
+  padding-bottom: 30px;
 }
 
 .landing_main_container .landing_about_container {
@@ -337,6 +413,105 @@
   margin-top: 20px;
   text-align: center;
   padding-bottom: 40px;
+}
+
+.landing_main_container .landing_sqaure_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 5%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  /* Set equal margin on the right and left sides */
+}
+
+.landing_main_container .gradient-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 20px;
+}
+
+.landing_main_container .card {
+  max-width: 380px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  border: 0;
+  width: 100%;
+  margin-inline: auto;
+  text-align: initial;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #20A4F3;
+  border-radius: 7px;
+}
+
+.landing_main_container .card .icon_container {
+  width: 50px;
+  /* Set the width and height to the desired size */
+  height: 50px;
+  border: 1px solid #20A4F3;
+  /* Blue border */
+  border-radius: 10px;
+  /* Adjust the border-radius to control the roundness of corners */
+  /* Optional: Add a background color to the container */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  /* Include border in width and height calculation */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landing_main_container .container-card {
+  position: relative;
+  border: 2px solid transparent;
+  background-color: #000;
+  border-radius: 7px;
+  padding: 40px;
+}
+
+.landing_main_container .container-card img {
+  margin-bottom: 32px;
+}
+
+.landing_main_container .card-title {
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.02em;
+  line-height: 40px;
+  font-style: normal;
+  font-size: 24px;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+
+.landing_main_container .card-description {
+  font-weight: 600;
+  line-height: 32px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  max-width: 470px;
 }
 
 .landing_main_container .landing_about_container_light_mode {
@@ -381,18 +556,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
 }
 
-.card {
-  border: 3px solid #ccc;
-  border-radius: 5px;
+.card_dark {
+  border: 1px solid #20A4F3;
+  border-radius: 10px;
   padding: 20px;
   width: 400px;
   text-align: center;
   color: white;
   font-size: 24px;
-  height: 80vh;
 }
 
 .card_light_mode {
