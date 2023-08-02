@@ -1,11 +1,49 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import FightersImage from './Images/fighters.png';
 import './Styles/Landing.css';
 import AnimatedValue from './Components/AnimatedValue';
-import Logo from './Images/Beaumont AI.png';
+// import Logo from './Images/Beaumont AI.png';
 import DarkModeSlider from './Components/DarkModeSlider';
 import { AppState } from './redux/types';
+import Button from './Components/Button';
+import Test from './Images/ai.png';
+
+const arr = [
+  {
+    icon: 'fa-solid fa-star icon fa-2x',
+    title: 'What is Dans App?',
+    about: `A comprehensive platform that combines a vast
+    database of past event data with advanced
+    predictive algorithms`,
+  },
+  {
+    icon: 'fa-solid fa-star icon fa-2x',
+    title: 'A wealth of information',
+    about: 'We provide hidden patterns and trends of the fight game, then using this we make accurate predictions about future fights',
+  },
+  {
+    icon: 'fa-solid fa-star icon fa-2x',
+    title: 'Above and beyond',
+    about: 'Through intense data analysis, we have found massively impacting fight factors that our competitors and Vegas havent noticed',
+  },
+  // {
+  //   icon: 'fa-solid fa-star icon fa-2x',
+  //   title: 'How it works',
+  //   about: 'Choose your fight package, pay the one time event fee, get instant access to the AI predictions, roll in the money!',
+  // },
+  // {
+  //   icon: 'fa-solid fa-star icon fa-2x',
+  //   title: 'Why use Dans app?',
+  //   about: '70% success rate, highly complex and accurate algorithm, make a second income',
+  // },
+  // {
+  //   icon: 'fa-solid fa-star icon fa-2x',
+  //   title: 'A wealth of information',
+  //   about: 'We provide hidden patterns and trends of the fight game, then using this we make accurate predictions about future fights',
+  // },
+
+]
 
 interface LandingProps {
   lightModeEnabled: boolean;
@@ -32,31 +70,53 @@ function Landing({ lightModeEnabled }: LandingProps) {
   } as React.CSSProperties;
 
   return (
-    <div className="landing_main_container">
+    <div
+      className="landing_main_container"
+      // style={{
+      //   // backgroundImage: `url(${BackgroundImage})`,
+      //   backgroundImage: `url(${BackgroundImage2})`,
+      //   backgroundSize: 'cover',
+      //   backgroundPosition: 'center',
+      //   backgroundRepeat: 'no-repeat',
+      //   height: '200vh',
+      // }}
+    >
       <DarkModeSlider />
+      <div className="container">
 
-      <div className="landing_title_and_image">
+        <div className="landing_title_and_image">
 
-        <div className="landing_title_container">
+          <div className="landing_title_container">
+            <div className="title_and_text">
 
-          <h1 className={lightModeEnabled ? 'landing_title_light_mode' : 'landing_title'}>
-            The
-            <h1 style={{ color: '#20A4F3', fontSize: '64px' }}>future</h1>
-            {' '}
-            of sport prediction
-          </h1>
-          <h4 className={lightModeEnabled ? 'h4_light_mode' : undefined}>
-            Through deep statistical analysis
-            and heavy research, Dans app is showing at least 70%
-            success rate on every UFC event, almost guaranteeing big profits to users who sign up
-          </h4>
-        </div>
+              <h1 className={lightModeEnabled ? 'landing_title_light_mode' : 'landing_title'}>
+                The
+                <h1 style={{ color: '#20A4F3', fontSize: '64px' }}>future</h1>
+                {' '}
+                of sport prediction
+              </h1>
+              <h4 className={lightModeEnabled ? 'h4_light_mode' : undefined}>
+                Through deep statistical analysis
+                and heavy research, Dans app is showing at least 70%
+                success rate on every UFC event,
+                almost guaranteeing big profits to users who sign up
+              </h4>
+              <Button title="Sign up" backgroundColor="#20A4F3" />
+            </div>
 
-        <div className="landing_image_container">
-          <img src={FightersImage} alt="Fighters" className="landing_fighters_image" />
-          <div className="landing_image_text_overlay" />
+          </div>
+
+          <div className="landing_image_container">
+            <div className="image_container">
+
+              <img src={Test} alt="Fighters" className="landing_fighters_image" />
+            </div>
+            {/* <img src={FightersImage} alt="Fighters" className="landing_fighters_image" /> */}
+            <div className="landing_image_text_overlay" />
+          </div>
         </div>
       </div>
+
       <div className={lightModeEnabled ? 'landing_success_rate_container_light_mode' : 'landing_success_rate_container'}>
         <h2>Current software success rate:</h2>
         <div className="landing_success_percentage">
@@ -66,7 +126,7 @@ function Landing({ lightModeEnabled }: LandingProps) {
       </div>
       <div className="landing_card_container">
 
-        <div className={lightModeEnabled ? 'card_light_mode' : 'card'} style={{ marginRight: '40px' }}>
+        <div className={lightModeEnabled ? 'card_light_mode' : 'card_dark'} style={{ marginRight: '40px' }}>
           <h2 className={lightModeEnabled ? 'landing_card_title_light_mode' : 'landing_card_title'}>Why use Dans app</h2>
 
           <div className="card-icon">
@@ -110,7 +170,7 @@ function Landing({ lightModeEnabled }: LandingProps) {
           </div>
 
         </div>
-        <div className={lightModeEnabled ? 'card_light_mode' : 'card'} style={{ marginLeft: '40px' }}>
+        <div className={lightModeEnabled ? 'card_light_mode' : 'card_dark'} style={{ marginLeft: '40px' }}>
           <h2 className={lightModeEnabled ? 'landing_card_title_light_mode' : 'landing_card_title'}>How it works</h2>
 
           <div className="card-icon">
@@ -167,7 +227,31 @@ function Landing({ lightModeEnabled }: LandingProps) {
           Sign up now!
         </button>
       </div>
-      <div className={lightModeEnabled ? 'landing_about_container_light_mode' : 'landing_about_container'}>
+      <div className={lightModeEnabled ? 'landing_features_container_light' : 'landing_features_container_dark'}>
+        <h4 style={{ textTransform: 'uppercase', paddingBottom: '30px' }}>Features</h4>
+        <h1>The most in depth MMA statistical analysis AI model on the web</h1>
+        <h4>As a better, you do not want to get left behind, sign up now to be ahead of both other betters and the betting sites</h4>
+      </div>
+      <div className="gradient-cards">
+
+        {arr.map((el) => (
+          <div className="card" id={el.title}>
+            <div className="container-card bg-green-box" style={lightModeEnabled ? { backgroundColor: '#f8f8f8' } : { backgroundColor: 'black' }}>
+              <div className="icon_container">
+                <i
+                  className={el.icon}
+                  style={{ color: '#20A4F3' }}
+                />
+              </div>
+
+              <p className="card-title" style={lightModeEnabled ? { color: 'black' } : undefined}>{el.title}</p>
+              <p className="card-description" style={lightModeEnabled ? { color: '#878585' } : undefined}>{el.about}</p>
+            </div>
+          </div>
+
+        ))}
+      </div>
+      {/* <div className={lightModeEnabled ? 'landing_about_container_light_mode' : 'landing_about_container'}>
         <h1>#1 MMA prediction app</h1>
         <p>
           Dans app is a comprehensive platform that combines a vast database
@@ -190,10 +274,10 @@ function Landing({ lightModeEnabled }: LandingProps) {
           thrill of accurate fight predictions with our groundbreaking UFC
           event data and prediction web app.
         </p>
-      </div>
-      <div className="landing_logo_container">
+      </div> */}
+      {/* <div className="landing_logo_container">
         <img src={Logo} alt="logo" />
-      </div>
+      </div> */}
     </div>
   );
 }

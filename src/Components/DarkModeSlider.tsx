@@ -21,7 +21,6 @@ function DarkModeSlider({ lightModeEnabled, toggleDarkMode: toggle }: DarkModeSl
         <div className="slider round" />
       </label>
       {lightModeEnabled ? (
-
         <em>Enable Dark Mode!</em>
       ) : <em style={{ color: '#ffffff' }}>Enable Light Mode!</em>}
     </div>
