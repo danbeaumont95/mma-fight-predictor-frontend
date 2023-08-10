@@ -524,7 +524,7 @@ function UpcomingEvents() {
         <div className="dans_class red">
           <div>
             {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
-              .amount_of_times_fighter_2_has_fought_fighter_1_style}
+              .amount_of_times_fighter_1_has_fought_fighter_2_style}
           </div>
 
         </div>
@@ -535,9 +535,10 @@ function UpcomingEvents() {
 
           <div>
             {inDepthStatsAgainstOpponentAndStyle[el.fighter1]
-              .percentage_of_wins_fighter_2_has_against_fighter_1_style}
+              .amount_of_times_fighter_2_has_fought_fighter_1_style}
           </div>
         </div>
+
         <div className="dans_class red">
           <div>
             {inDepthStatsAgainstOpponentAndStyle[el.fighter1]

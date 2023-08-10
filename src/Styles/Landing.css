@@ -559,6 +559,137 @@
   padding-bottom: 80px;
 }
 
+.landing_main_container .rtl_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  margin-top: 50px;
+  height: 60vh;
+  margin-bottom: 70px;
+}
+
+.landing_main_container .rtl_container .mac_image_container {
+  height: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.landing_main_container .rtl_container .mac_image_container .computer {
+  height: 100%;
+}
+
+.landing_main_container .rtl_container .events_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: start;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  height: 100%;
+  margin-right: 20px;
+}
+
+.landing_main_container .rtl_container .events_container .icon_container {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #20A4F3;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.landing_main_container .rtl_container .events_container h4 {
+  font-weight: 100;
+  margin-top: 20px;
+  line-height: 34px;
+  width: 90%;
+}
+
+.landing_main_container .landing_pricing_container {
+  color: white;
+  text-align: center;
+}
+
+.landing_main_container .landing_pricing_container .pricing_card_container {
+  text-align: left;
+  padding: 20px;
+  width: 400px;
+  border: 1px solid gray;
+}
+
+.landing_main_container .landing_pricing_container .pricing_card_container h4 {
+  font-weight: 100;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.landing_main_container .landing_pricing_container .pricing_card_container hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.landing_main_container .landing_pricing_container .pricing_card_container .pricing_card_description {
+  height: 20%;
+}
+
+.landing_main_container .landing_pricing_container .signup_button {
+  border: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom: 3px solid #0056b3;
+  /* Add a bottom border to the button */
+}
+
+.landing_main_container .landing_pricing_container .checkmark::before {
+  content: "\2713";
+  /* Unicode checkmark character */
+  font-family: "Arial", sans-serif;
+  /* Use a font that includes the checkmark symbol */
+  color: #009900;
+  /* Green color for the checkmark */
+  margin-right: 5px;
+}
+
+.landing_main_container .landing_pricing_container .pricing_cards_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 40px;
+  gap: 40px;
+}
+
 .card_dark {
   border: 1px solid #20A4F3;
   border-radius: 10px;
