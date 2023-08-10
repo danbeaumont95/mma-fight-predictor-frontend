@@ -6,7 +6,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
-import Landing from './Landing';
+import Landing from './Components/Landing';
 import UpcomingEvents from './Components/UpcomingEvents';
 
 function App() {

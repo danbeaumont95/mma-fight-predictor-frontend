@@ -1,49 +1,16 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import './Styles/Landing.css';
-import AnimatedValue from './Components/AnimatedValue';
+import '../Styles/Landing.css';
+import AnimatedValue from './AnimatedValue';
 // import Logo from './Images/Beaumont AI.png';
-import DarkModeSlider from './Components/DarkModeSlider';
-import { AppState } from './redux/types';
-import Button from './Components/Button';
-import Test from './Images/ai.png';
-
-const arr = [
-  {
-    icon: 'fa-solid fa-star icon fa-2x',
-    title: 'What is Dans App?',
-    about: `A comprehensive platform that combines a vast
-    database of past event data with advanced
-    predictive algorithms`,
-  },
-  {
-    icon: 'fa-solid fa-star icon fa-2x',
-    title: 'A wealth of information',
-    about: 'We provide hidden patterns and trends of the fight game, then using this we make accurate predictions about future fights',
-  },
-  {
-    icon: 'fa-solid fa-star icon fa-2x',
-    title: 'Above and beyond',
-    about: 'Through intense data analysis, we have found massively impacting fight factors that our competitors and Vegas havent noticed',
-  },
-  // {
-  //   icon: 'fa-solid fa-star icon fa-2x',
-  //   title: 'How it works',
-  //   about: 'Choose your fight package, pay the one time event fee, get instant access to the AI predictions, roll in the money!',
-  // },
-  // {
-  //   icon: 'fa-solid fa-star icon fa-2x',
-  //   title: 'Why use Dans app?',
-  //   about: '70% success rate, highly complex and accurate algorithm, make a second income',
-  // },
-  // {
-  //   icon: 'fa-solid fa-star icon fa-2x',
-  //   title: 'A wealth of information',
-  //   about: 'We provide hidden patterns and trends of the fight game, then using this we make accurate predictions about future fights',
-  // },
-
-]
+import DarkModeSlider from './DarkModeSlider';
+import { AppState } from '../redux/types';
+import Button from './Button';
+import Test from '../Images/ai.png';
+import Computer from '../Images/first-02-12-removebg-preview.png'
+import PricingCard from './PricingCard';
+import { gradientCardsArray, pricingCards } from '../Helpers/constants';
 
 interface LandingProps {
   lightModeEnabled: boolean;
@@ -230,11 +197,11 @@ function Landing({ lightModeEnabled }: LandingProps) {
       <div className={lightModeEnabled ? 'landing_features_container_light' : 'landing_features_container_dark'}>
         <h4 style={{ textTransform: 'uppercase', paddingBottom: '30px' }}>Features</h4>
         <h1>The most in depth MMA statistical analysis AI model on the web</h1>
-        <h4>As a better, you do not want to get left behind, sign up now to be ahead of both other betters and the betting sites</h4>
+        <h4 style={{ fontWeight: 100 }}>As a bettor, you do not want to get left behind, sign up now to be ahead of both other bettors and the betting sites</h4>
       </div>
       <div className="gradient-cards">
 
-        {arr.map((el) => (
+        {gradientCardsArray.map((el) => (
           <div className="card" id={el.title}>
             <div className="container-card bg-green-box" style={lightModeEnabled ? { backgroundColor: '#f8f8f8' } : { backgroundColor: 'black' }}>
               <div className="icon_container">
@@ -251,33 +218,37 @@ function Landing({ lightModeEnabled }: LandingProps) {
 
         ))}
       </div>
-      {/* <div className={lightModeEnabled ? 'landing_about_container_light_mode' : 'landing_about_container'}>
-        <h1>#1 MMA prediction app</h1>
-        <p>
-          Dans app is a comprehensive platform that combines a vast database
-          of past event data with advanced predictive algorithms,
-          empowering users to make informed predictions and stay ahead of the curve
-          in the world of mixed martial arts.
-          {'\n'}
-          {'\n'}
-          At the core of our app lies an extensive collection of historical UFC event data,
-          encompassing fight results, detailed statistics, and crucial performance metrics.
-          With just a few clicks, users can dive deep into the fighting careers of
-          their favorite athletes, exploring their records, past performances,
-          and even uncovering hidden patterns and trends. This wealth of information
-          serves as a solid foundation for making accurate predictions about future fights.
-          {'\n'}
-          {'\n'}
-          So, why wait? Join our community of UFC aficionados and unlock the power
-          of data-driven predictions. Explore the fascinating world of
-          MMA like never before, make informed decisions, and bask in the
-          thrill of accurate fight predictions with our groundbreaking UFC
-          event data and prediction web app.
-        </p>
-      </div> */}
-      {/* <div className="landing_logo_container">
-        <img src={Logo} alt="logo" />
-      </div> */}
+      <div className="rtl_container">
+        <div className="mac_image_container">
+          <img src={Computer} alt="" className="computer" />
+        </div>
+        <div className="events_container">
+          <div className="icon_container">
+            <i
+              className="fa-solid fa-star icon fa-2x"
+              style={{ color: '#20A4F3' }}
+            />
+          </div>
+
+          <h1>All event fights in details</h1>
+          <h4>Our modal has in depth statistics for each for on the next upcoming UFC card. The default fight stats available are match-up stats (record, style etc) and head to head stats(strikes landed per min, striking accuracy etc) and with our premium plan we offer premium stats (wins against opponent style, wins agains opponent stance)</h4>
+          <Button title="Get started" backgroundColor="#20A4F3" />
+
+        </div>
+      </div>
+      <div className="landing_pricing_container">
+
+        <h4 style={{ textTransform: 'uppercase', paddingBottom: '10px' }}>Features</h4>
+        <h1>Pricing plans</h1>
+
+        <div className="pricing_cards_container">
+
+          {pricingCards.map((el) => (
+            <PricingCard title={el.title} description={el.description} fee={el.fee} included={el.included} />
+          ))}
+        </div>
+
+      </div>
     </div>
   );
 }
