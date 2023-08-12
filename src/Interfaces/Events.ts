@@ -34,6 +34,7 @@ export interface FightAndWinner {
   fighter2: string;
   count: Count;
   winner: string;
+  index: number;
 }
 
 export interface BasicEventDetails {
@@ -41,6 +42,7 @@ export interface BasicEventDetails {
   fighter_2: string;
   weight_class: string;
   link: string;
+  index: number;
 }
 
 export interface AverageFightTime {
