@@ -27,6 +27,7 @@ function UpcomingEvents() {
   const [inDepthStatsAgainstOpponentAndStyle, setInDepthStatsAgainstOpponentAndStyle] = useState<{
     [key: string]: FighterRecordAgainstOpponentAndStyle
   }>({})
+  const [allFighterImagesLoaded, setAllFighterImagesLoaded] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
@@ -38,7 +39,11 @@ function UpcomingEvents() {
           const resx = await EventService.getFightsForEvent(data[0]);
           if (resx.data.data.length) {
             const { data: { data: event } } = resx;
-            await Promise.all(event.map(async (el: BasicEventDetails) => {
+            const sortedFights = event.map((el: BasicEventDetails, index: number) => ({
+              ...el,
+              index,
+            }));
+            await Promise.all(sortedFights.map(async (el: BasicEventDetails) => {
               const resz = await EventService.getBasicFightStatsForFight(el.link);
               const { data: { data: basicStats } } = resz;
               const fighter1 = Object.keys(basicStats.Height)[0];
@@ -49,17 +54,18 @@ function UpcomingEvents() {
                 fighter2,
                 count,
                 winner,
+                index: el.index, // Keep track of the original index
               };
               setFighterWeightClass((prevState) => ({
                 ...prevState,
                 [fighter1]: el.weight_class,
-              }))
+              }));
 
               setFightsAndWinners((prevState) => [...prevState, newData]);
               setFighterBasicFightStats((prevState) => ({
                 ...prevState,
                 [fighter1]: basicStats,
-              }))
+              }));
             }));
           }
           setLoading(false);
@@ -90,39 +96,53 @@ function UpcomingEvents() {
   }, []);
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchFighterImages() {
       try {
         const fighters = fightsAndWinners
           .map((fight) => [fight.fighter1, fight.fighter2]);
         const uniqueFighters = [...new Set(fighters.flat())];
+
         const fightersImages: {[key: string]: string} = {};
 
-        uniqueFighters.forEach((fighter) => {
-          const ufcFighterName = fighter.split(' ').join('-')
-          FighterService.getFighterImage(ufcFighterName)
-            .then((res) => {
+        await Promise.all(
+          uniqueFighters.map(async (fighter) => {
+            const ufcFighterName = fighter.split(' ').join('-');
+            try {
+              const res = await FighterService.getFighterImage(ufcFighterName);
               if (res.data.data) {
                 fightersImages[fighter] = res.data.data;
 
-                setFightersImagesState((prevState) => ({
-                  ...prevState,
-                  [fighter]: res.data.data,
-                }));
+                if (isMounted) {
+                  setFightersImagesState((prevState) => ({
+                    ...prevState,
+                    [fighter]: res.data.data,
+                  }));
+                }
               }
-            })
-            .catch((er) => {
-              console.log(er, 'er111')
-            })
-        })
+            } catch (er) {
+              console.log(er, 'er111');
+            }
+          }),
+        );
+
+        if (isMounted) {
+          setAllFighterImagesLoaded(true);
+        }
       } catch (ex) {
         console.error('Error fetching fighter images:', ex);
       }
     }
 
-    if (fightsAndWinners.length > 0 && !loading) {
+    if (fightsAndWinners.length > 0 && !loading && !allFighterImagesLoaded) {
       fetchFighterImages();
     }
-  }, [fightsAndWinners]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [fightsAndWinners, loading, allFighterImagesLoaded]);
 
   useEffect(() => {
     FighterService.getMostPopularFightStyles()
@@ -133,7 +153,6 @@ function UpcomingEvents() {
 
   const getPercentage = (val: number) => {
     const percentage = (val * 100).toFixed(0);
-
     return `${percentage}%`;
   }
 
@@ -645,6 +664,9 @@ function UpcomingEvents() {
 
   if (error) return <h1>Unable to fetch upcoming event. Please try again later.</h1>;
   if (loading) return <h1>Loading...</h1>;
+  if (!allFighterImagesLoaded) return <h1>Loading...</h1>;
+
+  console.log(fightsAndWinners, 'fightsAndWinners1')
 
   return (
     <div style={{ color: 'white' }}>
@@ -654,8 +676,10 @@ function UpcomingEvents() {
       </h1>
 
       <div className="upcoming_events_container">
-        {Array.from(new Set(fightsAndWinners.map((obj) => JSON.stringify(obj, null, 2))))
-          .map((str) => JSON.parse(str)).map((el: FightAndWinner) => {
+        {fightsAndWinners
+          .sort((a, b) => a.index - b.index)
+          .map((elx) => {
+            const el: FightAndWinner = JSON.parse(JSON.stringify(elx, null, 2))
             const countValues = Object.values(el.count);
             const totalCount = countValues.reduce((acc, curr) => acc + curr, 0);
             const percentage1 = (countValues[0] / totalCount) * 100;
