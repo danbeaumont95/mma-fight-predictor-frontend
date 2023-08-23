@@ -8,9 +8,9 @@ export interface FighterMatchupStatistic {
   first_name: string;
   last_name: string;
   gender: string;
-  style: string;
+  Style: string;
   record: string;
-  height: string;
+  Height: any;
   stance: string;
   dob: string;
   weight: string;

@@ -232,13 +232,13 @@ function Landing({ lightModeEnabled }: LandingProps) {
 
           <h1>All event fights in details</h1>
           <h4>Our modal has in depth statistics for each for on the next upcoming UFC card. The default fight stats available are match-up stats (record, style etc) and head to head stats(strikes landed per min, striking accuracy etc) and with our premium plan we offer premium stats (wins against opponent style, wins agains opponent stance)</h4>
-          <Button title="Get started" backgroundColor="#20A4F3" />
+          <Button title="Get started" backgroundColor="#20A4F3" width={210} />
 
         </div>
       </div>
       <div className="landing_pricing_container">
 
-        <h4 style={{ textTransform: 'uppercase', paddingBottom: '10px' }}>Features</h4>
+        <h4 style={{ textTransform: 'uppercase', paddingBottom: '30px', marginTop: '100px' }}>Pricing</h4>
         <h1>Pricing plans</h1>
 
         <div className="pricing_cards_container">

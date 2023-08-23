@@ -208,29 +208,28 @@ function UpcomingEvents() {
     <>
       <div className="dans_class red">
         <div>{fighterBasicFightStats[el.fighter1]?.['Wins/Losses/Draws'][el.fighter1]}</div>
-
       </div>
       <div className="dans_class border">
         <div className="stat_title">Record</div>
       </div>
       <div className="dans_class blue">
-
         <div>{fighterBasicFightStats[el.fighter1]?.['Wins/Losses/Draws'][el.fighter2]}</div>
       </div>
-      <div className="dans_class red">
-        <div>{fighterMatchupStats[el.fighter1]?.style ?? 'n/a'}</div>
 
+      <div className="dans_class red">
+        <div>{fighterMatchupStats[el.fighter1]?.Style ?? 'n/a'}</div>
       </div>
       <div className="dans_class border">
         <div className="stat_title">Style</div>
       </div>
       <div className="dans_class blue">
 
-        <div>{fighterMatchupStats[el.fighter2]?.style ?? 'n/a'}</div>
+        <div>{fighterMatchupStats[el.fighter1]?.Style ?? 'n/a'}</div>
       </div>
+
       <div className="dans_class red">
         {/* <div>Red</div> */}
-        <div>{fighterMatchupStats[el.fighter1]?.height ?? 'n/a'}</div>
+        <div>{fighterBasicFightStats[el.fighter1]?.Height[el.fighter1]}</div>
 
       </div>
       <div className="dans_class border">
@@ -238,12 +237,12 @@ function UpcomingEvents() {
       </div>
       <div className="dans_class blue">
 
-        <div>{fighterMatchupStats[el.fighter2]?.height ?? 'n/a'}</div>
+        <div>{fighterBasicFightStats[el.fighter1]?.Height[el.fighter2]}</div>
 
       </div>
       <div className="dans_class red">
         {/* <div>Red</div> */}
-        <div>{fighterMatchupStats[el.fighter1]?.reach ?? 'n/a'}</div>
+        <div>{fighterBasicFightStats[el.fighter1]?.Reach[el.fighter1]}</div>
 
       </div>
       <div className="dans_class border">
@@ -251,12 +250,12 @@ function UpcomingEvents() {
       </div>
       <div className="dans_class blue">
 
-        <div>{fighterMatchupStats[el.fighter2]?.reach ?? 'n/a'}</div>
+        <div>{fighterBasicFightStats[el.fighter1]?.Reach[el.fighter2]}</div>
 
       </div>
       <div className="dans_class red">
         {/* <div>Red</div> */}
-        <div>{fighterMatchupStats[el.fighter1]?.dob ?? 'n/a'}</div>
+        <div>{fighterBasicFightStats[el.fighter1]?.DOB[el.fighter1]}</div>
 
       </div>
       <div className="dans_class border">
@@ -264,7 +263,7 @@ function UpcomingEvents() {
       </div>
       <div className="dans_class blue">
 
-        <div>{fighterMatchupStats[el.fighter2]?.dob ?? 'n/a'}</div>
+        <div>{fighterBasicFightStats[el.fighter1]?.DOB[el.fighter2]}</div>
 
       </div>
     </>
@@ -578,7 +577,7 @@ function UpcomingEvents() {
         <div className="dans_class red">
           <div>
             {getPercentage(inDepthStatsAgainstOpponentAndStyle[el.fighter1]
-              .amount_of_times_fighter_1_has_fought_fighter_2_style)}
+              .percentage_of_wins_fighter_1_has_against_fighter_2_style)}
           </div>
 
         </div>
@@ -724,10 +723,11 @@ function UpcomingEvents() {
                     <div className="fighter_image_container">
                       <div className="fighter_1_percentage_container">
 
-                        {fightersImagesState[el.fighter1] && typeof (fightersImagesState[el.fighter1]) === 'string' && fightersImagesState[el.fighter1].startsWith('htt') ? (
+                        {fightersImagesState[el.fighter1] && typeof (fightersImagesState[el.fighter1]) === 'string' ? (
 
                           <img
-                            src={fightersImagesState[el.fighter1]}
+                            // src={fightersImagesState[el.fighter1]}
+                            src={`data:image/jpeg;base64,${fightersImagesState[el.fighter1]}`}
                             alt=""
                             style={{ height: '140px', width: '100px' }}
 
@@ -740,9 +740,13 @@ function UpcomingEvents() {
                       <div />
                       <div className="fighter_2_percentage_container">
 
-                        {fightersImagesState[el.fighter2] && typeof (fightersImagesState[el.fighter2]) === 'string' && fightersImagesState[el.fighter2].startsWith('htt') ? (
+                        {fightersImagesState[el.fighter2] && typeof (fightersImagesState[el.fighter2]) === 'string' ? (
 
-                          <img src={fightersImagesState[el.fighter2]} alt="" style={{ height: '140px', width: '100px' }} />
+                          <img
+                            src={`data:image/jpeg;base64,${fightersImagesState[el.fighter2]}`}
+                            alt=""
+                            style={{ height: '140px', width: '100px' }}
+                          />
                         ) : (
                           <img src={DefaultProfileImage} alt="" style={{ height: '140px', width: '100px' }} />
 
@@ -784,10 +788,10 @@ function UpcomingEvents() {
                     <div className={filteredStat === 'Head to Head' || filteredStat === 'Stats against opponent/style' ? 'fighter_image_container_large' : 'fighter_image_container'}>
                       <div className="fighter_1_percentage_container">
 
-                        {fightersImagesState[el.fighter1] && typeof (fightersImagesState[el.fighter1]) === 'string' && fightersImagesState[el.fighter1].startsWith('htt') ? (
+                        {fightersImagesState[el.fighter1] && typeof (fightersImagesState[el.fighter1]) === 'string' ? (
 
                           <img
-                            src={fightersImagesState[el.fighter1]}
+                            src={`data:image/jpeg;base64,${fightersImagesState[el.fighter1]}`}
                             alt=""
                             style={{
                               height: '90%', width: '90%', display: 'block', margin: 'auto',
@@ -820,10 +824,10 @@ function UpcomingEvents() {
                       </div>
                       <div className="fighter_2_percentage_container">
 
-                        {fightersImagesState[el.fighter2] && typeof (fightersImagesState[el.fighter2]) === 'string' && fightersImagesState[el.fighter2].startsWith('htt') ? (
+                        {fightersImagesState[el.fighter2] && typeof (fightersImagesState[el.fighter2]) === 'string' ? (
 
                           <img
-                            src={fightersImagesState[el.fighter2]}
+                            src={`data:image/jpeg;base64,${fightersImagesState[el.fighter2]}`}
                             alt=""
                             style={{
                               height: '90%', width: '90%', display: 'block', margin: 'auto',

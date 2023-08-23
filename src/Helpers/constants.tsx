@@ -24,12 +24,12 @@ export const pricingCards = [
     title: 'Next event',
     description: 'Revolutionize your fight night experience with our single fee access.',
     fee: '£5.00',
-    included: ['first', 'second', 'third'],
+    included: ['In depth statistics for each fight on said card', 'Access to fight card stats on purchase'],
   },
   {
     title: 'Annual',
     description: 'Never worry about forgetting to buy the single subscription again with an annual one off subcription',
     fee: '£40.00',
-    included: ['first', 'second', 'third'],
+    included: ['In depth statistics for each fight on said card', 'Access to fight card stats on the Monday of each fight week', 'Post fight card roundup deep dive into results'],
   },
 ]

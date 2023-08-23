@@ -339,6 +339,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .landing_main_container .landing_button_container .sign_up_button {
@@ -640,6 +641,7 @@
   padding: 20px;
   width: 400px;
   border: 1px solid gray;
+  margin-bottom: 100px;
 }
 
 .landing_main_container .landing_pricing_container .pricing_card_container h4 {
@@ -674,7 +676,7 @@
   /* Unicode checkmark character */
   font-family: "Arial", sans-serif;
   /* Use a font that includes the checkmark symbol */
-  color: #009900;
+  color: #007bff;
   /* Green color for the checkmark */
   margin-right: 5px;
 }
