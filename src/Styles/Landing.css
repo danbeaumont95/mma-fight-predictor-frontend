@@ -9,6 +9,14 @@
           flex-direction: row;
 }
 
+@media (max-width: 768px) {
+  .landing_main_container .container {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+
 .landing_main_container .theme-switch {
   display: inline-block;
   height: 34px;
@@ -72,6 +80,17 @@
   height: 100%;
 }
 
+@media (max-width: 768px) {
+  .landing_main_container .landing_title_and_image {
+    width: 100vw;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 60px;
+  }
+}
+
 .landing_main_container .landing_title_and_image .landing_title_container {
   -webkit-box-flex: 60%;
       -ms-flex: 60%;
@@ -100,9 +119,26 @@
           justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .landing_main_container .landing_title_and_image .landing_title_container .title_and_text {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+  }
+}
+
 .landing_main_container .landing_title_and_image .landing_title_container .title_and_text .landing_title {
   color: #FFFFFF;
   font-size: 64px;
+}
+
+@media (max-width: 768px) {
+  .landing_main_container .landing_title_and_image .landing_title_container .title_and_text .landing_title {
+    font-size: 52px;
+  }
+  .landing_main_container .landing_title_and_image .landing_title_container .title_and_text .landing_title h1 {
+    font-size: 52px !important;
+  }
 }
 
 .landing_main_container .landing_title_and_image .landing_title_container .title_and_text .landing_title_light_mode {
@@ -135,6 +171,13 @@
   display: flex;
 }
 
+@media (max-width: 768px) {
+  .landing_main_container .landing_title_and_image .landing_image_container {
+    margin-top: 30px;
+    height: 100%;
+  }
+}
+
 .landing_main_container .landing_title_and_image .landing_image_container .image_container {
   height: 80%;
   margin-top: auto;
@@ -145,6 +188,22 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .landing_main_container .landing_title_and_image .landing_image_container .image_container img {
+    height: 60% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing_main_container .landing_title_and_image .landing_image_container .image_container {
+    margin-top: 0;
+    width: 100vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 .landing_main_container .landing_title_and_image .landing_image_container .landing_fighters_image {
@@ -200,6 +259,12 @@
           flex-direction: column;
   margin-bottom: 80px;
   color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .landing_main_container .landing_success_rate_container {
+    text-align: center;
+  }
 }
 
 .landing_main_container .landing_success_rate_container h2 {
@@ -273,6 +338,18 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .landing_main_container .landing_card_container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 .landing_main_container .landing_card_container .landing_card {
@@ -427,7 +504,6 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  /* Set equal margin on the right and left sides */
 }
 
 .landing_main_container .gradient-cards {
@@ -437,6 +513,12 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .landing_main_container .gradient-cards {
+    padding-bottom: 0;
+  }
 }
 
 .landing_main_container .card {
@@ -463,16 +545,11 @@
 
 .landing_main_container .card .icon_container {
   width: 50px;
-  /* Set the width and height to the desired size */
   height: 50px;
   border: 1px solid #20A4F3;
-  /* Blue border */
   border-radius: 10px;
-  /* Adjust the border-radius to control the roundness of corners */
-  /* Optional: Add a background color to the container */
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  /* Include border in width and height calculation */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -568,6 +645,12 @@
   margin-top: 50px;
   height: 60vh;
   margin-bottom: 70px;
+}
+
+@media (max-width: 768px) {
+  .landing_main_container .rtl_container {
+    display: none;
+  }
 }
 
 .landing_main_container .rtl_container .mac_image_container {
@@ -692,6 +775,12 @@
   gap: 40px;
 }
 
+@media (max-width: 768px) {
+  .landing_main_container .landing_pricing_container .pricing_cards_container {
+    gap: 5px;
+  }
+}
+
 .card_dark {
   border: 1px solid #20A4F3;
   border-radius: 10px;
@@ -700,6 +789,15 @@
   text-align: center;
   color: white;
   font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .card_dark {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 90%;
+    margin: auto;
+  }
 }
 
 .card_light_mode {
@@ -711,6 +809,15 @@
   color: black;
   font-size: 24px;
   height: 80vh;
+}
+
+@media (max-width: 768px) {
+  .card_light_mode {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 90%;
+    margin: auto;
+  }
 }
 
 .card-icon {
