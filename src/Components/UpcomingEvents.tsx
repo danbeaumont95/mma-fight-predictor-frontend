@@ -7,6 +7,7 @@ import UpcomingEvent, {
 } from '../Interfaces/Events';
 import '../Styles/UpcomingEvents.css';
 import FighterService from '../Services/fighters';
+import FullPageLoader from './FullPageLoader';
 
 function UpcomingEvents() {
   const [upcomingEvent, setUpcomingEvent] = useState<UpcomingEvent>({ link: '', name: '' });
@@ -662,8 +663,8 @@ function UpcomingEvents() {
   }
 
   if (error) return <h1>Unable to fetch upcoming event. Please try again later.</h1>;
-  if (loading) return <h1>Loading...</h1>;
-  if (!allFighterImagesLoaded) return <h1>Loading...</h1>;
+  if (loading) return <FullPageLoader />
+  if (!allFighterImagesLoaded) return <FullPageLoader />
 
   console.log(fightsAndWinners, 'fightsAndWinners1')
 
@@ -810,14 +811,14 @@ function UpcomingEvents() {
                       </div>
                       <div className="opened_container">
                         <div className="dans_class" style={{ marginBottom: '20px', gap: '10px' }}>
-                          <div style={filteredStat === 'Matchup Stats' ? { fontWeight: 'bold', textDecoration: 'underline' } : undefined} onClick={() => setFilteredStat('Matchup Stats')}>Matchup Stats</div>
+                          <div className="match_up_stats" style={filteredStat === 'Matchup Stats' ? { fontWeight: 'bold', textDecoration: 'underline' } : undefined} onClick={() => setFilteredStat('Matchup Stats')}>Matchup Stats</div>
                           {fighterBasicFightStats[el.fighter1] ? (
 
-                            <div style={filteredStat === 'Head to Head' ? { fontWeight: 'bold', textDecoration: 'underline' } : undefined} onClick={() => setFilteredStat('Head to Head')}>Head to Head</div>
+                            <div className="head_to_head" style={filteredStat === 'Head to Head' ? { fontWeight: 'bold', textDecoration: 'underline' } : undefined} onClick={() => setFilteredStat('Head to Head')}>Head to Head</div>
                           ) : <i className="fas fa-circle-notch fa-spin" style={{ height: 'fit-content', width: 'fit-content' }} />}
                           {inDepthStatsAgainstOpponentAndStyle[el.fighter1] ? (
 
-                            <div style={filteredStat === 'Stats against opponent/style' ? { fontWeight: 'bold', textDecoration: 'underline' } : undefined} onClick={() => setFilteredStat('Stats against opponent/style')}>Stats against opponent/style</div>
+                            <div className="stats_against_opponent" style={filteredStat === 'Stats against opponent/style' ? { fontWeight: 'bold', textDecoration: 'underline' } : undefined} onClick={() => setFilteredStat('Stats against opponent/style')}>Stats against opponent/style</div>
                           ) : <i className="fas fa-circle-notch fa-spin" style={{ height: 'fit-content', width: 'fit-content' }} />}
                         </div>
                         {getStats(el)}

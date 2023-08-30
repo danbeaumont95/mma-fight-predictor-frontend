@@ -415,7 +415,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 50px;
 }
 
@@ -647,7 +647,7 @@
   margin-bottom: 70px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .landing_main_container .rtl_container {
     display: none;
   }
@@ -797,6 +797,7 @@
     margin-right: 0 !important;
     width: 90%;
     margin: auto;
+    margin-bottom: 20px;
   }
 }
 
@@ -818,6 +819,11 @@
     width: 90%;
     margin: auto;
   }
+}
+
+.card_light_mode:not(:last-child) {
+  margin-bottom: 20px;
+  /* Add margin-bottom to all but the last occurrence */
 }
 
 .card-icon {

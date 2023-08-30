@@ -306,7 +306,7 @@
   .landing_button_container {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
 
 
@@ -489,7 +489,8 @@
   }
 
   .rtl_container {
-    @media (max-width: 768px) {
+
+    @media (max-width: 1200px) {
       display: none;
     }
 
@@ -612,6 +613,7 @@
     margin-right: 0 !important;
     width: 90%;
     margin: auto;
+    margin-bottom: 20px;
   }
 
   border: 1px solid #20A4F3;
@@ -625,12 +627,18 @@
 
 .card_light_mode {
   @media (max-width: 768px) {
-
     margin-left: 0 !important;
     margin-right: 0 !important;
     width: 90%;
     margin: auto;
+
   }
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+    /* Add margin-bottom to all but the last occurrence */
+  }
+
 
   border: 3px solid #212121;
   border-radius: 5px;
