@@ -50,12 +50,10 @@ function Landing({ lightModeEnabled }: LandingProps) {
     >
       <DarkModeSlider />
       <div className="container">
-
         <div className="landing_title_and_image">
 
           <div className="landing_title_container">
             <div className="title_and_text">
-
               <h1 className={lightModeEnabled ? 'landing_title_light_mode' : 'landing_title'}>
                 The
                 <h1 style={{ color: '#20A4F3', fontSize: '64px' }}>future</h1>
@@ -70,15 +68,12 @@ function Landing({ lightModeEnabled }: LandingProps) {
               </h4>
               <Button title="Sign up" backgroundColor="#20A4F3" />
             </div>
-
           </div>
 
           <div className="landing_image_container">
             <div className="image_container">
-
               <img src={Test} alt="Fighters" className="landing_fighters_image" />
             </div>
-            {/* <img src={FightersImage} alt="Fighters" className="landing_fighters_image" /> */}
             <div className="landing_image_text_overlay" />
           </div>
         </div>
