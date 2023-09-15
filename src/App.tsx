@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Landing from './Components/Landing';
 import UpcomingEvents from './Components/UpcomingEvents';
+import UserAuthentication from './Components/UserAuthentication';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/events" element={<UpcomingEvents />} />
+          <Route path="/signup" element={<UserAuthentication />} />
         </Routes>
 
       </Router>

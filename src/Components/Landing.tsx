@@ -1,7 +1,10 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import {
+  connect, useDispatch,
+} from 'react-redux';
 import '../Styles/Landing.css';
+import { useNavigate } from 'react-router-dom';
 import AnimatedValue from './AnimatedValue';
 import DarkModeSlider from './DarkModeSlider';
 import { AppState } from '../redux/types';
@@ -10,20 +13,23 @@ import Test from '../Images/ai.png';
 import Computer from '../Images/first-02-12-removebg-preview.png'
 import PricingCard from './PricingCard';
 import { gradientCardsArray, pricingCards } from '../Helpers/constants';
-import EmailForm from './EmailForm';
+import { changeFee } from '../redux/actions';
 
 interface LandingProps {
   lightModeEnabled: boolean;
 }
 
 function Landing({ lightModeEnabled }: LandingProps) {
+  const dispatch = useDispatch();
+
   const [hovered, setHovered] = useState(false);
   const [showForm, setShowForm] = useState(false)
-  const [fee, setFee] = useState<string>('0')
   const handleClick = (fees: string) => {
     setShowForm(true)
-    setFee(fees)
+
+    dispatch(changeFee(fees));
   }
+  const navigate = useNavigate();
 
   useEffect(() => {
     const element: any = document.querySelector('.App');
@@ -53,6 +59,12 @@ function Landing({ lightModeEnabled }: LandingProps) {
     };
   }, [showForm]);
 
+  useEffect(() => {
+    if (showForm) {
+      navigate('/signup');
+    }
+  }, [showForm])
+
   const buttonStyle = {
     '--slist': hovered ? '#20A4F3, #2EC4B6' : '#2EC4B6, #20A4F3',
   } as React.CSSProperties;
@@ -70,7 +82,6 @@ function Landing({ lightModeEnabled }: LandingProps) {
       // }}
     >
       <DarkModeSlider />
-      {showForm ? <EmailForm fee={fee} setShowForm={setShowForm} /> : null}
       <div className="container">
         <div className="landing_title_and_image">
 

@@ -33,3 +33,17 @@ export const pricingCards = [
     included: ['In depth statistics for each fight on said card', 'Access to fight card stats on the Monday of each fight week', 'Post fight card roundup deep dive into results'],
   },
 ]
+
+export const defaultUserSignUpState = {
+  email: '',
+  username: '',
+  first_name: '',
+  last_name: '',
+  password: '',
+  password_confirm: '',
+}
+
+export const defaultUserLoginState = {
+  username: '',
+  password: '',
+}
