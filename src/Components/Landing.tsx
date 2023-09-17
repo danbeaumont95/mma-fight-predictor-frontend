@@ -1,23 +1,35 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import {
+  connect, useDispatch,
+} from 'react-redux';
 import '../Styles/Landing.css';
+import { useNavigate } from 'react-router-dom';
 import AnimatedValue from './AnimatedValue';
-// import Logo from './Images/Beaumont AI.png';
 import DarkModeSlider from './DarkModeSlider';
 import { AppState } from '../redux/types';
-import Button from './Button';
+import Button from './UI-Components/Button';
 import Test from '../Images/ai.png';
 import Computer from '../Images/first-02-12-removebg-preview.png'
 import PricingCard from './PricingCard';
 import { gradientCardsArray, pricingCards } from '../Helpers/constants';
+import { changeFee } from '../redux/actions';
 
 interface LandingProps {
   lightModeEnabled: boolean;
 }
 
 function Landing({ lightModeEnabled }: LandingProps) {
+  const dispatch = useDispatch();
+
   const [hovered, setHovered] = useState(false);
+  const [showForm, setShowForm] = useState(false)
+  const handleClick = (fees: string) => {
+    setShowForm(true)
+
+    dispatch(changeFee(fees));
+  }
+  const navigate = useNavigate();
 
   useEffect(() => {
     const element: any = document.querySelector('.App');
@@ -31,6 +43,27 @@ function Landing({ lightModeEnabled }: LandingProps) {
     return () => {
     };
   }, [lightModeEnabled]);
+
+  useEffect(() => {
+    const handleEscKey = (event: any) => {
+      if (event.keyCode === 27) {
+        // "Esc" key pressed, change the state
+        setShowForm(!showForm);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscKey);
+
+    return () => {
+      window.removeEventListener('keydown', handleEscKey);
+    };
+  }, [showForm]);
+
+  useEffect(() => {
+    if (showForm) {
+      navigate('/signup');
+    }
+  }, [showForm])
 
   const buttonStyle = {
     '--slist': hovered ? '#20A4F3, #2EC4B6' : '#2EC4B6, #20A4F3',
@@ -66,7 +99,8 @@ function Landing({ lightModeEnabled }: LandingProps) {
                 success rate on every UFC event,
                 almost guaranteeing big profits to users who sign up
               </h4>
-              <Button title="Sign up" backgroundColor="#20A4F3" />
+              <button style={{ backgroundColor: '#20A4F3' }} className="button" type="button" onClick={() => handleClick('£5.00')}>Sign up</button>
+
             </div>
           </div>
 
@@ -185,6 +219,7 @@ function Landing({ lightModeEnabled }: LandingProps) {
           className="sign_up_button"
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          onClick={() => handleClick('£5.00')}
         >
           Sign up now!
         </button>
@@ -239,7 +274,7 @@ function Landing({ lightModeEnabled }: LandingProps) {
         <div className="pricing_cards_container">
 
           {pricingCards.map((el) => (
-            <PricingCard title={el.title} description={el.description} fee={el.fee} included={el.included} />
+            <PricingCard title={el.title} description={el.description} fee={el.fee} included={el.included} handleClick={handleClick} />
           ))}
         </div>
 

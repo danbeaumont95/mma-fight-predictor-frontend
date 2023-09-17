@@ -1,0 +1,223 @@
+.sign_up_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 40px;
+  padding-left: 40px;
+  height: 100vh;
+  background-color: #191919;
+}
+
+.sign_up_container .sign_up_containers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sign_up_container .sign_up_containers .sign_up_image_container {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sign_up_container .sign_up_containers .sign_up_image_container .sign_up_image {
+  height: 90%;
+  width: 90%;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .form_details_container {
+  text-align: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 90%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp h2 {
+  font-size: 2.5rem;
+  color: #F6F6F6;
+  margin-bottom: 20px;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .form_already_have_account_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .form_already_have_account_container h3 {
+  font-size: 1.2rem;
+  color: #F6F6F6;
+  font-weight: 400;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .form_already_have_account_container .form_already_sign_in {
+  color: #017BFE;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .form_already_have_account_container .form_already_sign_in:hover {
+  text-decoration: underline;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container div {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container div label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #F6F6F6;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container div .input_error {
+  border: 2px solid red;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container div input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  -webkit-transition: border-color 0.2s;
+  transition: border-color 0.2s;
+  background-color: #F6F6F6;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container div input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container .name-inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container .name-inputs input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container .sign_up_form_button_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container .sign_up_form_button_container button {
+  width: 60%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container .sign_up_form_button_container button:hover {
+  background-color: #0056b3;
+}
+/*# sourceMappingURL=UserSignUp.css.map */

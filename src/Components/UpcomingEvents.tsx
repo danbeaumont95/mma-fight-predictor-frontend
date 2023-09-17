@@ -304,21 +304,6 @@ function UpcomingEvents() {
           {fighterBasicFightStats[el.fighter1]?.Defense[el.fighter2]}
         </div>
       </div>
-      <div className="dans_class red">
-        <div>
-          {fighterBasicFightStats[el.fighter1]?.Grappling[el.fighter1]}
-        </div>
-
-      </div>
-      <div className="dans_class border">
-        <div className="stat_title">Grappling</div>
-      </div>
-      <div className="dans_class blue">
-
-        <div>
-          {fighterBasicFightStats[el.fighter1]?.Grappling[el.fighter2]}
-        </div>
-      </div>
 
       <div className="dans_class red">
         <div>
@@ -395,21 +380,7 @@ function UpcomingEvents() {
           {fighterBasicFightStats[el.fighter1]?.['Strikes Landed per Min. (SLpM)'][el.fighter2]}
         </div>
       </div>
-      <div className="dans_class red">
-        <div>
-          {fighterBasicFightStats[el.fighter1]?.['Striking (Significant Strikes)'][el.fighter1]}
-        </div>
 
-      </div>
-      <div className="dans_class border">
-        <div className="stat_title">Striking (Significant Strikes)</div>
-      </div>
-      <div className="dans_class blue">
-
-        <div>
-          {fighterBasicFightStats[el.fighter1]?.['Striking (Significant Strikes)'][el.fighter2]}
-        </div>
-      </div>
       <div className="dans_class red">
         <div>
           {fighterBasicFightStats[el.fighter1]?.['Striking Accuracy'][el.fighter1]}
