@@ -99,7 +99,13 @@
             color: #F6F6F6;
           }
 
+          .input_error {
+            border: 2px solid red;
+          }
+
           input {
+
+
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -112,6 +118,8 @@
               outline: none;
               border-color: #007bff;
             }
+
+
           }
         }
 

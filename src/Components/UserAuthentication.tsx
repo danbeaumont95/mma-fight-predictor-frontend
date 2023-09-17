@@ -1,15 +1,18 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Tooltip } from 'react-tooltip'
 import { UserSignUpData, UserLoginData } from '../Interfaces/User';
 import { defaultUserSignUpState, defaultUserLoginState } from '../Helpers/constants';
 import UserService from '../Services/user';
 import { handleCheckout } from '../Helpers/stripe';
 import Image from '../Images/signupimage.jpeg';
 import '../Styles/UserSignUp.css';
+import Input from './UI-Components/Input';
 
 // eslint-disable-next-line react/function-component-definition
 const UserAuthentication: React.FC = () => {
@@ -18,9 +21,9 @@ const UserAuthentication: React.FC = () => {
     defaultUserSignUpState,
   );
   const [hovered, setHovered] = useState(false);
-  const [errors, setErrors] = useState({});
-  const [successfulAction, setSuccessfulAction] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(true); // Track whether it's sign-up or login
+  const [errors, setErrors] = useState<any>({});
+  const [isSignUp, setIsSignUp] = useState(true);
+  const [hoveredElementId, setHoveredElementId] = useState<string>('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,6 +31,9 @@ const UserAuthentication: React.FC = () => {
       ...formData,
       [name]: value,
     });
+    const newItems = { ...errors };
+    delete newItems[name];
+    setErrors(newItems);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -36,14 +42,13 @@ const UserAuthentication: React.FC = () => {
       UserService.register(formData as UserSignUpData)
         .then((res: any) => {
           if (res.status === 201) {
-            setSuccessfulAction(true);
             toast.success('Success! Signed up successfully.');
             setFormData(defaultUserSignUpState);
             handleCheckout({ fee, email: (formData as UserSignUpData).email });
           } else if (res?.response?.data) {
             setErrors(res.response.data);
             toast.error(
-              'Error in sign-up form! Please click on the highlighted input fields to find out more.',
+              'Error in sign-up form! Please hover over the highlighted input fields to find out more.',
             );
           }
         })
@@ -56,32 +61,37 @@ const UserAuthentication: React.FC = () => {
             UserService.login({ username: resx.data.data, password: formData.password } as any)
               .then((res: any) => {
                 if (res.status === 200) {
-                  setSuccessfulAction(true);
                   toast.success('Success! Signed in successfully.');
                   setFormData(defaultUserLoginState);
                   handleCheckout({ fee, email: formData.username })
+                  localStorage.setItem('accessToken', res.data.access)
+                  localStorage.setItem('refreshToken', res.data.refresh)
                 } else if (res?.response?.data) {
                   setErrors(res.response.data);
                   toast.error(
-                    'Error in login form! Please click on the highlighted input fields to find out more.',
+                    'Error in login form! Email/password do not match.',
                   );
                 }
               })
               .catch(() => toast.error('Error! Unable to sign in. Please try again later.'));
+          } else {
+            toast.error('Error! Email not found.')
           }
         })
     }
   };
 
+  const inputHasError = (name: keyof UserSignUpData) => Object.keys(errors).indexOf(name) > -1
+
   const buttonStyle = {
     '--slist': hovered ? '#20A4F3, #2EC4B6' : '#2EC4B6, #20A4F3',
   } as React.CSSProperties;
 
-  console.log({ errors, successfulAction });
-
   return (
     <div className="sign_up_container">
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" autoClose={3000} />
+      <Tooltip id={hoveredElementId} />
+
       <div className="sign_up_containers">
         <div className="sign_up_image_container">
           <img src={Image} alt="sign-up" className="sign_up_image" />
@@ -102,28 +112,9 @@ const UserAuthentication: React.FC = () => {
               <div className="inside_form_container">
                 {isSignUp && (
                   <>
-                    <div>
-                      <label>Email:</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={(formData as UserSignUpData).email}
-                        onChange={handleChange}
-                        required
-                        placeholder="Email"
-                      />
-                    </div>
-                    <div>
-                      <label>Username:</label>
-                      <input
-                        type="text"
-                        name="username"
-                        value={formData.username}
-                        onChange={handleChange}
-                        required
-                        placeholder="Username"
-                      />
-                    </div>
+                    <Input inputName="email" formData={formData} handleChange={handleChange} inputHasError={inputHasError} errors={errors} setHoveredElementId={setHoveredElementId} />
+                    <Input inputName="username" formData={formData} handleChange={handleChange} inputHasError={inputHasError} errors={errors} setHoveredElementId={setHoveredElementId} />
+
                     <div>
                       <label>First Name and Last Name:</label>
                       <div className="name-inputs">
@@ -134,6 +125,10 @@ const UserAuthentication: React.FC = () => {
                           onChange={handleChange}
                           required
                           placeholder="First name"
+                          className={inputHasError('first_name') ? 'input_error' : undefined}
+                          data-tooltip-id="signup-first_name-tooltip"
+                          data-tooltip-content={inputHasError('first_name') ? errors.first_name.join(', ') : undefined}
+                          onMouseOver={() => setHoveredElementId('signup-first_name-tooltip')}
                         />
                         <input
                           type="text"
@@ -142,57 +137,25 @@ const UserAuthentication: React.FC = () => {
                           onChange={handleChange}
                           required
                           placeholder="Last name"
+                          className={inputHasError('last_name') ? 'input_error' : undefined}
+                          data-tooltip-id="signup-last_name-tooltip"
+                          data-tooltip-content={inputHasError('last_name') ? errors.last_name.join(', ') : undefined}
+                          onMouseOver={() => setHoveredElementId('signup-last_name-tooltip')}
                         />
                       </div>
                     </div>
-                    <div>
-                      <label>Password:</label>
-                      <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                        placeholder="Password"
-                      />
-                    </div>
-                    <div>
-                      <label>Confirm Password:</label>
-                      <input
-                        type="password"
-                        name="password_confirm"
-                        value={(formData as UserSignUpData).password_confirm}
-                        onChange={handleChange}
-                        required
-                        placeholder="Password"
-                      />
-                    </div>
+                    <Input inputName="password" formData={formData} handleChange={handleChange} inputHasError={inputHasError} errors={errors} setHoveredElementId={setHoveredElementId} />
+
+                    <Input inputName="password_confirm" formData={formData} handleChange={handleChange} inputHasError={inputHasError} errors={errors} setHoveredElementId={setHoveredElementId} />
+
                   </>
                 )}
                 {!isSignUp && (
                   <>
-                    <div>
-                      <label>Email:</label>
-                      <input
-                        type="text"
-                        name="username"
-                        value={(formData as UserLoginData).username}
-                        onChange={handleChange}
-                        required
-                        placeholder="Email"
-                      />
-                    </div>
-                    <div>
-                      <label>Password:</label>
-                      <input
-                        type="password"
-                        name="password"
-                        value={(formData as UserSignUpData | UserLoginData).password}
-                        onChange={handleChange}
-                        required
-                        placeholder="Password"
-                      />
-                    </div>
+                    <Input inputName="email" formData={formData} handleChange={handleChange} inputHasError={inputHasError} errors={errors} setHoveredElementId={setHoveredElementId} />
+
+                    <Input inputName="password" formData={formData} handleChange={handleChange} inputHasError={inputHasError} errors={errors} setHoveredElementId={setHoveredElementId} />
+
                   </>
                 )}
                 <div className="sign_up_form_button_container">

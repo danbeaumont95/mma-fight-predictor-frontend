@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import AnimatedValue from './AnimatedValue';
 import DarkModeSlider from './DarkModeSlider';
 import { AppState } from '../redux/types';
-import Button from './Button';
+import Button from './UI-Components/Button';
 import Test from '../Images/ai.png';
 import Computer from '../Images/first-02-12-removebg-preview.png'
 import PricingCard from './PricingCard';

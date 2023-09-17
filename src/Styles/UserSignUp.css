@@ -154,6 +154,10 @@
   color: #F6F6F6;
 }
 
+.sign_up_container .sign_up_containers .UserSignUp .inside_form_container div .input_error {
+  border: 2px solid red;
+}
+
 .sign_up_container .sign_up_containers .UserSignUp .inside_form_container div input {
   width: 100%;
   padding: 10px;
