@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DefaultProfileImage from '../Images/standing-stance-left-silhouette.png';
 import EventService from '../Services/events';
 import UpcomingEvent, {
@@ -8,8 +9,16 @@ import UpcomingEvent, {
 import '../Styles/UpcomingEvents.css';
 import FighterService from '../Services/fighters';
 import FullPageLoader from './FullPageLoader';
+import { useAuth } from './AuthContext';
 
 function UpcomingEvents() {
+  const { accessToken } = useAuth();
+  console.log(accessToken, 'accessTokenaccessToken')
+  const navigate = useNavigate();
+  if (!accessToken) {
+    navigate('/signup');
+  }
+
   const [upcomingEvent, setUpcomingEvent] = useState<UpcomingEvent>({ link: '', name: '' });
   const [fightsAndWinners, setFightsAndWinners] = useState<FightAndWinner[]>([])
   const [fightersImagesState, setFightersImagesState] = useState<{[key: string]: string}>({});

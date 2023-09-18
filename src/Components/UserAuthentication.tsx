@@ -13,9 +13,12 @@ import { handleCheckout } from '../Helpers/stripe';
 import Image from '../Images/signupimage.jpeg';
 import '../Styles/UserSignUp.css';
 import Input from './UI-Components/Input';
+import { useAuth } from './AuthContext';
 
 // eslint-disable-next-line react/function-component-definition
 const UserAuthentication: React.FC = () => {
+  const { login } = useAuth();
+
   const fee = useSelector((state: any) => state.fee);
   const [formData, setFormData] = useState<UserSignUpData | UserLoginData>(
     defaultUserSignUpState,
@@ -55,7 +58,7 @@ const UserAuthentication: React.FC = () => {
         .catch(() => toast.error('Error! Unable to sign up. Please try again later.'));
     } else {
       // user logs in with email and password, but backend requires username and password
-      UserService.getUsernameFromEmail(formData.username)
+      UserService.getUsernameFromEmail(formData.email)
         .then((resx: any) => {
           if (resx.data.message === 'Success!') {
             UserService.login({ username: resx.data.data, password: formData.password } as any)
@@ -63,9 +66,8 @@ const UserAuthentication: React.FC = () => {
                 if (res.status === 200) {
                   toast.success('Success! Signed in successfully.');
                   setFormData(defaultUserLoginState);
-                  handleCheckout({ fee, email: formData.username })
-                  localStorage.setItem('accessToken', res.data.access)
-                  localStorage.setItem('refreshToken', res.data.refresh)
+                  handleCheckout({ fee, email: formData.email })
+                  login(res.data.access);
                 } else if (res?.response?.data) {
                   setErrors(res.response.data);
                   toast.error(
