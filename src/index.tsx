@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { Provider } from 'react-redux';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { PersistGate } from 'redux-persist/integration/react'
 import App from './App';
-import store from './redux/store';
+import { store, persistor } from './redux/store';
 import { AuthProvider } from './Components/AuthContext';
 
 const root = ReactDOM.createRoot(
@@ -11,8 +13,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Provider store={store}>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </PersistGate>
   </Provider>,
 );

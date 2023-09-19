@@ -72,6 +72,11 @@
       grid-template-columns: 30% auto 30%;
 }
 
+.upcoming_events_container .upcoming_events_fight_container .fighters_container .vs.fighter_name:hover {
+  color: #ce45c5;
+  font-weight: 900;
+}
+
 .upcoming_events_container .upcoming_events_fight_container .fighters_container::before {
   grid-column: 1 / -1;
   content: "";

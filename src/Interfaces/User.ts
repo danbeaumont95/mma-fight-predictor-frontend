@@ -29,3 +29,9 @@ export interface AuthContextType {
   login: (token: string) => void;
   logout: () => void;
 }
+
+export interface Tokens {
+  access: string;
+  refresh: string;
+  email?: string;
+}

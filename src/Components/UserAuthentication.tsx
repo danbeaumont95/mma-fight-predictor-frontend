@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -14,10 +14,12 @@ import Image from '../Images/signupimage.jpeg';
 import '../Styles/UserSignUp.css';
 import Input from './UI-Components/Input';
 import { useAuth } from './AuthContext';
+import { updateLoggedInUser } from '../redux/actions';
 
 // eslint-disable-next-line react/function-component-definition
 const UserAuthentication: React.FC = () => {
   const { login } = useAuth();
+  const dispatch = useDispatch();
 
   const fee = useSelector((state: any) => state.fee);
   const [formData, setFormData] = useState<UserSignUpData | UserLoginData>(
@@ -65,9 +67,17 @@ const UserAuthentication: React.FC = () => {
               .then((res: any) => {
                 if (res.status === 200) {
                   toast.success('Success! Signed in successfully.');
-                  setFormData(defaultUserLoginState);
-                  handleCheckout({ fee, email: formData.email })
-                  login(res.data.access);
+                  UserService.saveTokens({
+                    access: res.data.access,
+                    refresh: res.data.refresh,
+                    email: formData.email,
+                  })
+                    .then(() => {
+                      dispatch(updateLoggedInUser({ email: formData.email }))
+                      setFormData(defaultUserLoginState);
+                      login(res.data.access);
+                      handleCheckout({ fee, email: formData.email })
+                    })
                 } else if (res?.response?.data) {
                   setErrors(res.response.data);
                   toast.error(
