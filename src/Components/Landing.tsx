@@ -21,15 +21,14 @@ interface LandingProps {
 
 function Landing({ lightModeEnabled }: LandingProps) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [hovered, setHovered] = useState(false);
   const [showForm, setShowForm] = useState(false)
   const handleClick = (fees: string) => {
     setShowForm(true)
-
     dispatch(changeFee(fees));
   }
-  const navigate = useNavigate();
 
   useEffect(() => {
     const element: any = document.querySelector('.App');

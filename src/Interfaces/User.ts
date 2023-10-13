@@ -12,6 +12,7 @@ export interface UserSignUpData {
 export interface UserLoginData {
   username: string;
   password: string;
+  email?: any;
 }
 
 export interface InputProps {
@@ -21,4 +22,16 @@ export interface InputProps {
   inputHasError: (name: keyof UserSignUpData) => boolean;
   errors: any;
   setHoveredElementId: (value: React.SetStateAction<string>) => void;
+}
+
+export interface AuthContextType {
+  accessToken: string | null;
+  login: (token: string) => void;
+  logout: () => void;
+}
+
+export interface Tokens {
+  access: string;
+  refresh: string;
+  email?: string;
 }

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -13,9 +13,14 @@ import { handleCheckout } from '../Helpers/stripe';
 import Image from '../Images/signupimage.jpeg';
 import '../Styles/UserSignUp.css';
 import Input from './UI-Components/Input';
+import { useAuth } from './AuthContext';
+import { updateLoggedInUser } from '../redux/actions';
 
 // eslint-disable-next-line react/function-component-definition
 const UserAuthentication: React.FC = () => {
+  const { login } = useAuth();
+  const dispatch = useDispatch();
+
   const fee = useSelector((state: any) => state.fee);
   const [formData, setFormData] = useState<UserSignUpData | UserLoginData>(
     defaultUserSignUpState,
@@ -55,17 +60,24 @@ const UserAuthentication: React.FC = () => {
         .catch(() => toast.error('Error! Unable to sign up. Please try again later.'));
     } else {
       // user logs in with email and password, but backend requires username and password
-      UserService.getUsernameFromEmail(formData.username)
+      UserService.getUsernameFromEmail(formData.email)
         .then((resx: any) => {
           if (resx.data.message === 'Success!') {
             UserService.login({ username: resx.data.data, password: formData.password } as any)
               .then((res: any) => {
                 if (res.status === 200) {
                   toast.success('Success! Signed in successfully.');
-                  setFormData(defaultUserLoginState);
-                  handleCheckout({ fee, email: formData.username })
-                  localStorage.setItem('accessToken', res.data.access)
-                  localStorage.setItem('refreshToken', res.data.refresh)
+                  UserService.saveTokens({
+                    access: res.data.access,
+                    refresh: res.data.refresh,
+                    email: formData.email,
+                  })
+                    .then(() => {
+                      dispatch(updateLoggedInUser({ email: formData.email }))
+                      setFormData(defaultUserLoginState);
+                      login(res.data.access);
+                      handleCheckout({ fee, email: formData.email })
+                    })
                 } else if (res?.response?.data) {
                   setErrors(res.response.data);
                   toast.error(
