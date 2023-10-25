@@ -9,6 +9,7 @@ import {
 import Landing from './Components/Landing';
 import UpcomingEvents from './Components/UpcomingEvents';
 import UserAuthentication from './Components/UserAuthentication';
+// import WebSocketComponent from './Components/WebSocketComponent';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/events" element={<UpcomingEvents />} />
           <Route path="/signup" element={<UserAuthentication />} />
+          {/* <Route path="/success" element={<WebSocketComponent />} /> */}
         </Routes>
 
       </Router>

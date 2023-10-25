@@ -13,22 +13,44 @@ import FighterService from '../Services/fighters';
 import FullPageLoader from './FullPageLoader';
 import { useAuth } from './AuthContext';
 import UserService from '../Services/user';
+import PurchaseService from '../Services/purchase';
+// import { handleCheckout } from '../Helpers/stripe';
 
 function UpcomingEvents() {
+  const [haveCheckedAccessToken, setHaveCheckedToken] = useState(false)
   const user = useSelector((state: any) => state.user);
   const { accessToken } = useAuth();
   const navigate = useNavigate();
-  if (!accessToken) {
-    navigate('/signup');
-  } else {
-    const { email } = user;
-    UserService.checkAccessToken(accessToken, email)
-      .then((res: any) => {
-        if (res.data.message !== 'Success!') {
-          toast.error('Error! Please log in again')
-          navigate('/signup');
-        }
-      })
+  if (!haveCheckedAccessToken) {
+    console.log('ifblock')
+    if (!accessToken) {
+      navigate('/signup');
+    } else {
+      const { email } = user;
+      UserService.checkAccessToken(accessToken, email)
+        .then((res: any) => {
+          if (res.data.message !== 'Success!') {
+            toast.error('Error! Please log in again')
+            navigate('/signup');
+          }
+        })
+      PurchaseService.hasUserPurchasedEvent('test', accessToken)
+        .then((res) => {
+          if (res.data.data === false) {
+            toast.error('Error! Event not purchased. You will now be navigated to buy this event')
+            // const fee = '£5.00'
+            // handleCheckout({ fee, email })
+          } else if (res.data.data === true) {
+            console.log('purchase found.')
+          }
+        })
+        .catch(() => {
+          toast.error('Error! Unable to get purchase. Please try again later.')
+        })
+        .finally(() => {
+          setHaveCheckedToken(true)
+        })
+    }
   }
 
   const [upcomingEvent, setUpcomingEvent] = useState<UpcomingEvent>({ link: '', name: '' });
@@ -295,18 +317,27 @@ function UpcomingEvents() {
   const headToHeadStats = (el: FightAndWinner) => (
     <>
       <div className="dans_class red">
-        <div>
+        {/* <div>
           {fighterBasicFightStats[el.fighter1]['Average Fight Time'][el.fighter1]}
+        </div> */}
+        <div>
+          {fighterBasicFightStats[el.fighter1] && fighterBasicFightStats[el.fighter1]['Average Fight Time']
+            ? fighterBasicFightStats[el.fighter1]['Average Fight Time'][el.fighter1]
+            : '--'}
         </div>
-
       </div>
       <div className="dans_class border">
         <div className="stat_title">Average Fight Time</div>
       </div>
       <div className="dans_class blue">
 
-        <div>
+        {/* <div>
           {fighterBasicFightStats[el.fighter1]['Average Fight Time'][el.fighter2]}
+        </div> */}
+        <div>
+          {fighterBasicFightStats[el.fighter1] && fighterBasicFightStats[el.fighter1]['Average Fight Time']
+            ? fighterBasicFightStats[el.fighter1]['Average Fight Time'][el.fighter2]
+            : '--'}
         </div>
       </div>
 
@@ -342,8 +373,13 @@ function UpcomingEvents() {
         </div>
       </div>
       <div className="dans_class red">
-        <div>
+        {/* <div>
           {fighterBasicFightStats[el.fighter1]?.Reach[el.fighter1]}
+        </div> */}
+        <div>
+          {fighterBasicFightStats[el.fighter1] && fighterBasicFightStats[el.fighter1].Reach
+            ? fighterBasicFightStats[el.fighter1].Reach[el.fighter1]
+            : '--'}
         </div>
 
       </div>
@@ -352,13 +388,23 @@ function UpcomingEvents() {
       </div>
       <div className="dans_class blue">
 
-        <div>
+        {/* <div>
           {fighterBasicFightStats[el.fighter1]?.Reach[el.fighter2]}
+        </div> */}
+        <div>
+          {fighterBasicFightStats[el.fighter1] && fighterBasicFightStats[el.fighter1].Reach
+            ? fighterBasicFightStats[el.fighter1].Reach[el.fighter2]
+            : '--'}
         </div>
       </div>
       <div className="dans_class red">
-        <div>
+        {/* <div>
           {fighterBasicFightStats[el.fighter1]?.Stance[el.fighter1]}
+        </div> */}
+        <div>
+          {fighterBasicFightStats[el.fighter1] && fighterBasicFightStats[el.fighter1].Stance
+            ? fighterBasicFightStats[el.fighter1].Stance[el.fighter1]
+            : '--'}
         </div>
 
       </div>
@@ -367,8 +413,13 @@ function UpcomingEvents() {
       </div>
       <div className="dans_class blue">
 
-        <div>
+        {/* <div>
           {fighterBasicFightStats[el.fighter1]?.Stance[el.fighter2]}
+        </div> */}
+        <div>
+          {fighterBasicFightStats[el.fighter1] && fighterBasicFightStats[el.fighter1].Stance
+            ? fighterBasicFightStats[el.fighter1].Stance[el.fighter2]
+            : '--'}
         </div>
       </div>
       <div className="dans_class red">
@@ -593,7 +644,7 @@ function UpcomingEvents() {
 
         </div>
         <div className="dans_class border">
-          <div className="stat_title">Amount of times fighter has fought opoonetn stance</div>
+          <div className="stat_title">Amount of times fighter has fought opponent stance</div>
         </div>
         <div className="dans_class blue">
 
@@ -658,7 +709,7 @@ function UpcomingEvents() {
   if (loading) return <FullPageLoader />
   if (!allFighterImagesLoaded) return <FullPageLoader />
 
-  console.log(fightsAndWinners, 'fightsAndWinners1')
+  console.log(fighterBasicFightStats, 'fighterBasicFightStats1')
 
   return (
     <div style={{ color: 'white' }}>
