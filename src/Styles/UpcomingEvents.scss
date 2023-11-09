@@ -552,3 +552,39 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 
 }
+
+svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.swirl_container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.custom-shape-divider-top-1699563146 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1699563146 svg {
+  position: relative;
+  display: block;
+  width: calc(156% + 1.3px);
+  height: 312px;
+}
+
+.custom-shape-divider-top-1699563146 .shape-fill {
+  fill: #613ddc;
+}

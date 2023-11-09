@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -14,6 +16,7 @@ import FullPageLoader from './FullPageLoader';
 import { useAuth } from './AuthContext';
 import UserService from '../Services/user';
 import PurchaseService from '../Services/purchase';
+import { ProgressBar } from './ProgressBar';
 // import { handleCheckout } from '../Helpers/stripe';
 
 function UpcomingEvents() {
@@ -64,6 +67,16 @@ function UpcomingEvents() {
   const [nextEventPoster, setNextEventPoster] = useState('')
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line no-unused-vars
+  const [loadingEvents, setLoadingEvents] = useState(true)
+  // eslint-disable-next-line no-unused-vars
+  const [loadingStats, setLoadingStats] = useState(false)
+  // eslint-disable-next-line no-unused-vars
+  const [loadingImages, setLoadingImages] = useState(false)
+  const [amountOfFightEventsLoading, setAmountOfFightEventsLoading] = useState(0)
+  const [amountOfFightStatsLoading, setAmountOfFightStatsLoading] = useState(0)
+  const [amountOfImagesLoading, setAmountOfImagesLoading] = useState(0)
+  const [amountOfImages, setAmountOfImages] = useState(0)
   const [filteredStat, setFilteredStat] = useState('Matchup Stats')
   const [fighterBasicFightStats, setFighterBasicFightStats] = useState<{
     [key: string]: FighterBasicFightStats
@@ -87,8 +100,12 @@ function UpcomingEvents() {
               ...el,
               index,
             }));
-            await Promise.all(sortedFights.map(async (el: BasicEventDetails) => {
+            setLoadingEvents(false)
+            setAmountOfFightEventsLoading(1)
+            setLoadingStats(true)
+            await Promise.all(sortedFights.map(async (el: BasicEventDetails, i: number) => {
               const resz = await EventService.getBasicFightStatsForFight(el.link);
+              setAmountOfFightStatsLoading(i)
               const { data: { data: basicStats } } = resz;
               const fighter1 = Object.keys(basicStats.Height)[0];
               const fighter2 = Object.keys(basicStats.Height)[1];
@@ -111,6 +128,7 @@ function UpcomingEvents() {
                 [fighter1]: basicStats,
               }));
             }));
+            setLoadingStats(false)
           }
           setLoading(false);
         } else {
@@ -149,9 +167,11 @@ function UpcomingEvents() {
         const uniqueFighters = [...new Set(fighters.flat())];
 
         const fightersImages: {[key: string]: string} = {};
+        setLoadingImages(true)
 
         await Promise.all(
-          uniqueFighters.map(async (fighter) => {
+          uniqueFighters.map(async (fighter, i: number) => {
+            setAmountOfImagesLoading(i)
             const ufcFighterName = fighter.split(' ').join('-');
             try {
               const res = await FighterService.getFighterImage(ufcFighterName);
@@ -170,6 +190,8 @@ function UpcomingEvents() {
             }
           }),
         );
+        setAmountOfImages(uniqueFighters.length)
+        setLoadingImages(false)
 
         if (isMounted) {
           setAllFighterImagesLoaded(true);
@@ -706,8 +728,29 @@ function UpcomingEvents() {
   }
 
   if (error) return <h1>Unable to fetch upcoming event. Please try again later.</h1>;
-  if (loading) return <FullPageLoader />
-  if (!allFighterImagesLoaded) return <FullPageLoader />
+
+  if (loading) {
+    return (
+      <section style={{ position: 'relative', height: '100vh' }}>
+        <div className="custom-shape-divider-top-1699563146">
+          <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill" />
+          </svg>
+
+          <div style={{
+            display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',
+          }}
+          >
+            <ProgressBar value={amountOfFightEventsLoading} max={1} text="Loading events" />
+            <ProgressBar value={amountOfFightStatsLoading} max={12} text="Loading stats" />
+            <ProgressBar value={amountOfImagesLoading} max={amountOfImages} text="Loading images" />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // if (!allFighterImagesLoaded) return <FullPageLoader />
 
   console.log(fighterBasicFightStats, 'fighterBasicFightStats1')
 

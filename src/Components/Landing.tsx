@@ -6,7 +6,6 @@ import {
 import '../Styles/Landing.css';
 import { useNavigate } from 'react-router-dom';
 import AnimatedValue from './AnimatedValue';
-import DarkModeSlider from './DarkModeSlider';
 import { AppState } from '../redux/types';
 import Button from './UI-Components/Button';
 import Test from '../Images/ai.png';
@@ -71,16 +70,7 @@ function Landing({ lightModeEnabled }: LandingProps) {
   return (
     <div
       className="landing_main_container"
-      // style={{
-      //   // backgroundImage: `url(${BackgroundImage})`,
-      //   backgroundImage: `url(${BackgroundImage2})`,
-      //   backgroundSize: 'cover',
-      //   backgroundPosition: 'center',
-      //   backgroundRepeat: 'no-repeat',
-      //   height: '200vh',
-      // }}
     >
-      <DarkModeSlider />
       <div className="container">
         <div className="landing_title_and_image">
 
