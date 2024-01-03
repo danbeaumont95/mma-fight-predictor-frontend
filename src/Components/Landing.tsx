@@ -105,7 +105,6 @@ function Landing({ lightModeEnabled }: LandingProps) {
                 almost guaranteeing big profits to users who sign up
               </h4>
               <button style={{ backgroundColor: '#20A4F3' }} className="button" type="button" onClick={() => handleClick('£5.00')}>Sign up</button>
-
             </div>
           </div>
 
