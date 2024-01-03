@@ -1,0 +1,3 @@
+https://mma-fight-predictor.netlify.app/
+https://mma-fight-predictor.netlify.app/events
+https://mma-fight-predictor.netlify.app/signup

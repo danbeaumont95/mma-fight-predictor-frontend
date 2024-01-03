@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async'
 import DefaultProfileImage from '../Images/standing-stance-left-silhouette.png';
 import EventService from '../Services/events';
 import UpcomingEvent, {
@@ -662,6 +663,11 @@ function UpcomingEvents() {
 
   return (
     <div style={{ color: 'white' }}>
+      <Helmet>
+        <title>MMA Fight Predictor Upcoming events</title>
+        <meta name="description" content="The latest AI predictions for the upcoming UFC card with each fight detailed and given breakdown per statistic" />
+        <link rel="canonical" href="/events" />
+      </Helmet>
       <img src={nextEventPoster} alt="next event poster" className="event_poster" />
       <h1 className="upcoming_event_title">
         {upcomingEvent.name}

@@ -4,6 +4,7 @@ import './index.css';
 import { Provider } from 'react-redux';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { PersistGate } from 'redux-persist/integration/react'
+import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 import { store, persistor } from './redux/store';
 import { AuthProvider } from './Components/AuthContext';
@@ -15,7 +16,9 @@ root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <AuthProvider>
-        <App />
+        <HelmetProvider>
+          <App />
+        </HelmetProvider>
       </AuthProvider>
     </PersistGate>
   </Provider>,

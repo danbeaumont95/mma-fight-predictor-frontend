@@ -5,6 +5,7 @@ import {
 } from 'react-redux';
 import '../Styles/Landing.css';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'
 import AnimatedValue from './AnimatedValue';
 import DarkModeSlider from './DarkModeSlider';
 import { AppState } from '../redux/types';
@@ -80,6 +81,11 @@ function Landing({ lightModeEnabled }: LandingProps) {
       //   height: '200vh',
       // }}
     >
+      <Helmet>
+        <title>MMA Fight Predictor Landing</title>
+        <meta name="description" content="Subscribe now and get the latest AI predictions for the upcoming UFC card" />
+        <link rel="canonical" href="/" />
+      </Helmet>
       <DarkModeSlider />
       <div className="container">
         <div className="landing_title_and_image">
