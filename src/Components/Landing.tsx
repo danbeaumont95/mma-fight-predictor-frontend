@@ -82,7 +82,7 @@ function Landing({ lightModeEnabled }: LandingProps) {
       // }}
     >
       <Helmet>
-        <title>MMA Fight Predictor Landing</title>
+        <title>MMA Fight Predictor</title>
         <meta name="description" content="Subscribe now and get the latest AI predictions for the upcoming UFC card" />
         <link rel="canonical" href="/" />
       </Helmet>
